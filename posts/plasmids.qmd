@@ -1,0 +1,191 @@
+---
+title: "Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes"
+date: 2026-10-02
+date-format: "D MMMM YYYY"
+author: "Anthony Warnecke"
+description: "What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution."
+categories: [Plasmid biology, Bacterial evolution]
+body-classes: writing-article
+page-layout: article
+toc: false
+anchor-sections: false
+title-block-categories: false
+---
+
+[← All writing](../writing.qmd){.article-back-link}
+
+::: {.article-lead}
+Chromosomes dominate how we think about inheritance, but some of the most evolutionarily flexible DNA exists outside them. A recent Perspective in *Nature Reviews Genetics* argues that bacterial plasmids and extrachromosomal DNA in cancer may represent strikingly similar solutions to the same evolutionary problem: how to adapt quickly when conditions change.[1](#ref-1)
+:::
+
+The comparison is surprising. Bacterial plasmids and cancer-associated extrachromosomal DNA, or **ecDNA**, exist in completely different organisms and operate within very different cellular systems.
+
+Yet both can replicate independently of chromosomes, exist at multiple copies within a cell and segregate imperfectly during cell division.[1](#ref-1)
+
+Those properties make extrachromosomal DNA more than an alternative place to store genes. They can fundamentally alter how quickly populations generate variation and respond to selection.
+
+## Copy number changes what a gene can do
+
+Moving a gene onto a multicopy element immediately changes its biological context.
+
+A chromosomal gene may exist once per genome. The same gene carried on a plasmid can exist at tens or even hundreds of copies per cell.
+
+For dose-dependent traits, that difference matters. Increasing the number of resistance-gene copies can increase the amount of resistance protein produced and therefore increase the level of resistance.
+
+But copy number also changes the evolutionary potential of the gene.
+
+More copies mean more DNA molecules on which mutations can occur. Experiments with multicopy plasmids have shown that this increased mutational supply can accelerate the evolution of antibiotic resistance.[2](#ref-2)
+
+Recent work has also shown that plasmid copy number follows broader relationships with plasmid size, suggesting that copy number itself is a fundamental feature of plasmid ecology and evolution rather than simply a laboratory parameter.[3](#ref-3)
+
+## Imperfect inheritance creates variation
+
+Chromosomes are normally inherited with remarkable precision.
+
+High-copy plasmids are less predictable.
+
+When a bacterial cell divides, plasmid copies may not be distributed equally between its daughters. Over several generations, this creates a population containing cells with different plasmid copy numbers.
+
+This variation can directly produce variation in phenotype.
+
+Hernandez-Beltran and colleagues showed that variation in plasmid copy number can generate **phenotypic noise in antibiotic resistance**, creating transiently resistant cells within an otherwise genetically similar population.[4](#ref-4)
+
+That has an important evolutionary consequence.
+
+If the environment suddenly changes, some cells may already possess a plasmid copy number suited to the new conditions. Selection can therefore act immediately on variation that already exists within the population.
+
+The same principle appears in cancer.
+
+ecDNA lacks conventional chromosomal segregation machinery, meaning daughter cells can inherit different numbers of oncogene-carrying ecDNA molecules. This generates substantial variation within tumours and allows ecDNA abundance to respond rapidly to treatment.[5](#ref-5)
+
+## Evolution does not always have to wait for mutation
+
+This is perhaps the most interesting part of the analogy.
+
+We often think about adaptation as:
+
+**mutation → selection → spread**
+
+Extrachromosomal DNA introduces another route:
+
+**copy-number variation → selection → rapid phenotypic change**
+
+A population can therefore alter the dosage of an existing gene without waiting for a new mutation to arise.
+
+If selection changes again, the distribution of copy numbers can shift back.
+
+The paper describes plasmids and ecDNA as potential **contingency loci**: unusually evolvable portions of the genome capable of generating phenotypic diversity when conditions change.[1](#ref-1)
+
+This idea is particularly interesting for antimicrobial resistance. Antibiotic exposure is rarely constant. Bacteria experience pulses of selection as antibiotic concentrations rise and fall between environments, tissues and treatments.
+
+A genetic system capable of rapidly generating both high- and low-copy subpopulations could provide considerable flexibility under those conditions.
+
+## Extrachromosomal DNA can reshape the rest of the cell
+
+Copy number is only part of the story.
+
+Plasmids can also alter bacterial phenotype by changing the expression of chromosomal genes.
+
+Multidrug-resistance plasmids have been shown to reprogramme host transcription, including metabolic pathways that have no obvious direct relationship to the resistance genes carried by the plasmid.[6](#ref-6)
+
+This raises a broader evolutionary question: why would a plasmid alter host behaviour?
+
+One possibility is that some plasmid-induced phenotypes improve the persistence or transmission of the plasmid itself. This has led to the suggestion that plasmids can effectively **manipulate bacterial phenotype**, rather than functioning simply as passive vehicles for accessory genes.[7](#ref-7)
+
+ecDNA provides an interesting parallel.
+
+In cancer cells, different ecDNA molecules can physically associate into regulatory hubs, allowing enhancers and oncogenes carried on separate molecules to interact.[8](#ref-8)
+
+Again, DNA outside the chromosome becomes part of the regulatory architecture of the cell.
+
+## Plasmids and ecDNA are not the same thing
+
+The analogy has limits.
+
+Plasmids can move horizontally between bacterial cells and even between species. Their evolutionary interests can therefore become partly independent of the bacterium currently carrying them.
+
+Cancer ecDNA generally remains within a tumour lineage.
+
+Plasmids can also acquire genes from many evolutionary sources, whereas ecDNA originates from chromosomal DNA within the host cell.
+
+The molecular mechanisms involved in replication and segregation are also very different.
+
+The interesting similarity is therefore at the level of **evolutionary function**.
+
+Despite their independent origins, both systems allow important genes to exist on autonomously replicating, variably inherited DNA molecules.[1](#ref-1)
+
+## A different way to think about plasmids
+
+Plasmid biology is often framed around horizontal gene transfer.
+
+That makes sense, particularly when thinking about antimicrobial resistance.
+
+But the comparison with ecDNA highlights another dimension of plasmid evolution: **what happens after the plasmid arrives inside the cell?**
+
+Its copy number can change.
+
+Its genes can mutate.
+
+Its structure can rearrange.
+
+Its inheritance can generate cell-to-cell variation.
+
+And its presence can alter the expression and behaviour of the bacterial host.
+
+For me, this connects directly with the questions behind my PhD.
+
+If an antimicrobial-resistance plasmid changes bacterial behaviour, is that simply a physiological side effect of carrying additional DNA?
+
+Is the bacterium adapting to the plasmid?
+
+Or has selection shaped plasmids to modify their hosts in ways that improve plasmid persistence and transmission?
+
+Thinking about plasmids as independent evolutionary entities makes those questions much more interesting.
+
+::: {.article-endnote}
+[More about my PhD research →](../research/phd.qmd)
+:::
+
+---
+
+## References
+
+<div id="ref-1"></div>
+
+**1.** Shaw, L. P. & Henssen, A. G. The shared evolutionary capacities of plasmids and extrachromosomal DNA. *Nature Reviews Genetics* (2026).  
+[DOI: 10.1038/s41576-026-01012-7](https://doi.org/10.1038/s41576-026-01012-7)
+
+<div id="ref-2"></div>
+
+**2.** San Millan, A., Escudero, J. A., Gifford, D. R., Mazel, D. & MacLean, R. C. Multicopy plasmids potentiate the evolution of antibiotic resistance in bacteria. *Nature Ecology & Evolution* **1**, 10 (2016).  
+[DOI: 10.1038/s41559-016-0010](https://doi.org/10.1038/s41559-016-0010)
+
+<div id="ref-3"></div>
+
+**3.** Ramiro-Martínez, P. *et al.* Universal rules govern plasmid copy number. *Nature Communications* **16**, 6022 (2025).  
+[DOI: 10.1038/s41467-025-61202-5](https://doi.org/10.1038/s41467-025-61202-5)
+
+<div id="ref-4"></div>
+
+**4.** Hernandez-Beltran, J. C. R. *et al.* Plasmid-mediated phenotypic noise leads to transient antibiotic resistance in bacteria. *Nature Communications* **15**, 2610 (2024).  
+[DOI: 10.1038/s41467-024-45045-0](https://doi.org/10.1038/s41467-024-45045-0)
+
+<div id="ref-5"></div>
+
+**5.** Lange, J. T. *et al.* The evolutionary dynamics of extrachromosomal DNA in human cancers. *Nature Genetics* **54**, 1527–1533 (2022).  
+[DOI: 10.1038/s41588-022-01177-x](https://doi.org/10.1038/s41588-022-01177-x)
+
+<div id="ref-6"></div>
+
+**6.** Hall, R. J., Snaith, A. E., Thomas, M. J. N., Brockhurst, M. A. & McNally, A. Multidrug resistance plasmids commonly reprogram the expression of metabolic genes in *Escherichia coli*. *mSystems* **9**, e01193-23 (2024).  
+[DOI: 10.1128/msystems.01193-23](https://doi.org/10.1128/msystems.01193-23)
+
+<div id="ref-7"></div>
+
+**7.** Billane, K., Harrison, E., Cameron, D. & Brockhurst, M. A. Why do plasmids manipulate the expression of bacterial phenotypes? *Philosophical Transactions of the Royal Society B* **377**, 20200461 (2022).  
+[DOI: 10.1098/rstb.2020.0461](https://doi.org/10.1098/rstb.2020.0461)
+
+<div id="ref-8"></div>
+
+**8.** Hung, K. L. *et al.* ecDNA hubs drive cooperative intermolecular oncogene expression. *Nature* **600**, 731–736 (2021).  
+[DOI: 10.1038/s41586-021-04116-8](https://doi.org/10.1038/s41586-021-04116-8)

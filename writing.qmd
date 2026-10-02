@@ -20,7 +20,7 @@ listing:
 
 ```{=html}
 <div class="writing-heading">
-  <p>Notes on microbial genetics, genomics and bacterial evolution.</p>
+  <p>My ramblings on microbial genetics, genomics, and bacterial evolution.</p>
 </div>
 ```
 
