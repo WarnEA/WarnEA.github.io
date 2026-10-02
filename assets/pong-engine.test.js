@@ -62,15 +62,17 @@ Deno.test('a score resets the ball and gives a short stationary serve interval',
   assert(game.ball.vx < 0, 'The next serve should head towards the side that scored.');
 });
 
-Deno.test('the first side to five wins; finished play freezes until a restart', () => {
+Deno.test('the first side to three wins; finished play freezes until a restart', () => {
+  assert(COURT.winningScore === 3, 'Matches should end at three points.');
   for (const winner of ['player', 'cpu']) {
     const game = gameInPlay();
-    for (let point = 0; point < 5; point += 1) {
+    for (let point = 0; point < 3; point += 1) {
       game.serveDelay = 0;
       Object.assign(game.ball, { x: winner === 'player' ? COURT.width + 13 : -13, y: 30, vx: winner === 'player' ? 390 : -390, vy: 0 });
       game.step(.01);
+      if (point < 2) assert(game.state === 'playing' && !game.winner, 'The first two points must keep the match going.');
     }
-    assert(game.state === 'finished' && game.winner === winner && game[winner].score === 5, 'The fifth point must end the match.');
+    assert(game.state === 'finished' && game.winner === winner && game[winner].score === 3, 'The third point must end the match.');
     const before = snapshot(game);
     game.step(.05, 1);
     game.start();
@@ -130,30 +132,46 @@ Deno.test('either winner sends the resistance gene to the opposite bacterium', (
     const transfer = new ResistanceTransfer();
     transfer.begin(winner);
     assert(transfer.winner === winner && transfer.recipient === (winner === 'player' ? 'cpu' : 'player'), 'The losing bacterium must receive the gene.');
-    assert(transfer.phase === 'growing' && transfer.active && transfer.extension === 0 && !transfer.transformed, 'A win should start with a new, unextended pilus.');
+    assert(transfer.phase === 'approaching' && transfer.active && transfer.approachProgress === 0 && transfer.extension === 0 && !transfer.transformed, 'A win should bring the bacteria together before growing a pilus.');
   }
 });
 
-Deno.test('the pilus finishes extending before the gene travels and the recipient transforms', () => {
+Deno.test('the bacteria approach before the pilus connects, the gene travels and the recipient transforms', () => {
   const transfer = new ResistanceTransfer();
   transfer.begin('player');
   for (let frame = 0; frame < 10; frame += 1) transfer.step(.05);
-  assert(transfer.phase === 'growing' && transfer.extension < 1 && transfer.geneProgress === 0 && !transfer.transformed, 'The gene must wait for the connection.');
-  for (let frame = 0; frame < 10; frame += 1) transfer.step(.05);
+  assert(transfer.phase === 'approaching' && transfer.approachProgress > 0 && transfer.approachProgress < 1 && transfer.extension === 0 && transfer.geneProgress === 0, 'The bacteria must move together before the pilus grows.');
+  for (let frame = 0; frame < 8; frame += 1) transfer.step(.05);
+  assert(transfer.phase === 'growing' && transfer.approachProgress === 1 && transfer.extension > 0 && transfer.extension < 1 && transfer.geneProgress === 0 && !transfer.transformed, 'The gene must wait for the connection between nearby bacteria.');
+  for (let frame = 0; frame < 14; frame += 1) transfer.step(.05);
   assert(transfer.phase === 'sending' && transfer.extension === 1 && transfer.geneProgress > 0 && transfer.geneProgress < 1 && !transfer.transformed, 'A connected pilus should carry the gene before transformation.');
-  for (let frame = 0; frame < 22; frame += 1) transfer.step(.05);
+  for (let frame = 0; frame < 24; frame += 1) transfer.step(.05);
   assert(transfer.phase === 'transformed' && transfer.geneProgress === 1 && transfer.transformed, 'The recipient should transform only once the gene arrives.');
-  for (let frame = 0; frame < 18; frame += 1) transfer.step(.05);
-  assert(transfer.phase === 'complete' && !transfer.active && transfer.elapsed === transfer.duration, 'The sequence must terminate after 2.6 seconds.');
+  for (let frame = 0; frame < 14; frame += 1) transfer.step(.05);
+  assert(transfer.phase === 'complete' && !transfer.active && transfer.elapsed === transfer.duration, 'The sequence must terminate after 3.4 seconds.');
   const before = JSON.stringify(transfer);
   transfer.step(1);
   assert(JSON.stringify(transfer) === before, 'A completed sequence must stay still.');
 });
 
+Deno.test('approaching bacteria freeze on pause and resume without jumping ahead', () => {
+  const transfer = new ResistanceTransfer();
+  transfer.begin('cpu');
+  for (let frame = 0; frame < 8; frame += 1) transfer.step(.05);
+  const progress = transfer.approachProgress;
+  assert(Math.abs(progress - .5) < .00001, 'Halfway through the approach should be halfway to the target.');
+  transfer.pause();
+  for (let frame = 0; frame < 20; frame += 1) transfer.step(.05);
+  assert(transfer.approachProgress === progress && transfer.extension === 0, 'Pause must freeze the approach before any pilus appears.');
+  transfer.resume();
+  transfer.step(.05);
+  assert(transfer.approachProgress > progress && transfer.phase === 'approaching', 'Resume must continue the same approach.');
+});
+
 Deno.test('an interrupted transfer stays frozen and resumes from its current gene position', () => {
   const transfer = new ResistanceTransfer();
   transfer.begin('cpu');
-  for (let frame = 0; frame < 20; frame += 1) transfer.step(.05);
+  for (let frame = 0; frame < 40; frame += 1) transfer.step(.05);
   const elapsed = transfer.elapsed;
   const progress = transfer.geneProgress;
   transfer.pause();
@@ -170,7 +188,7 @@ Deno.test('reduced motion immediately shows the recipient resistant and leaves n
   for (const winner of ['player', 'cpu']) {
     const transfer = new ResistanceTransfer();
     transfer.begin(winner, true);
-    assert(transfer.phase === 'complete' && transfer.transformed && transfer.extension === 1 && transfer.geneProgress === 1 && !transfer.active && !transfer.paused, 'Reduced motion should show the full outcome without an animation.');
+    assert(transfer.phase === 'complete' && transfer.transformed && transfer.approachProgress === 1 && transfer.extension === 1 && transfer.geneProgress === 1 && !transfer.active && !transfer.paused, 'Reduced motion should show the nearby bacteria and full outcome without an animation.');
     transfer.pause();
     assert(!transfer.paused, 'Closing a completed sequence must not produce a false Resume state.');
   }
@@ -179,10 +197,10 @@ Deno.test('reduced motion immediately shows the recipient resistant and leaves n
 Deno.test('restart clears the recipient, zombie state and pending paused transfer', () => {
   const transfer = new ResistanceTransfer();
   transfer.begin('player');
-  for (let frame = 0; frame < 42; frame += 1) transfer.step(.05);
+  for (let frame = 0; frame < 58; frame += 1) transfer.step(.05);
   transfer.pause();
   transfer.reset();
-  assert(transfer.phase === 'idle' && transfer.winner === null && transfer.recipient === null && !transfer.transformed && !transfer.paused && !transfer.active && transfer.elapsed === 0, 'Restart must clear the entire outcome.');
+  assert(transfer.phase === 'idle' && transfer.winner === null && transfer.recipient === null && !transfer.transformed && !transfer.paused && !transfer.active && transfer.elapsed === 0 && transfer.approachProgress === 0, 'Restart must clear the entire outcome and move the bacteria back to their paddles.');
   const before = JSON.stringify(transfer);
   transfer.step(.05);
   assert(JSON.stringify(transfer) === before, 'An idle transfer must not animate.');
@@ -192,7 +210,7 @@ Deno.test('transfer frame gaps are bounded and switching to reduced motion compl
   const transfer = new ResistanceTransfer();
   transfer.begin('player');
   transfer.step(100);
-  assert(transfer.elapsed === .05 && transfer.phase === 'growing', 'A background frame gap must not skip the entire sequence.');
+  assert(transfer.elapsed === .05 && transfer.phase === 'approaching', 'A background frame gap must not skip the approach.');
   const before = JSON.stringify(transfer);
   for (const elapsed of [0, -1, Infinity, NaN]) transfer.step(elapsed);
   assert(JSON.stringify(transfer) === before, 'Invalid animation times must be ignored.');

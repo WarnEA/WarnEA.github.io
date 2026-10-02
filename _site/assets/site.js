@@ -9,27 +9,35 @@
     const toggle = document.getElementById('pong-toggle');
     const reset = document.getElementById('pong-reset');
     const close = document.getElementById('culture-close');
+    const description = document.getElementById('culture-description');
     const status = document.getElementById('culture-status');
     const youScore = document.getElementById('pong-you-score');
     const cpuScore = document.getElementById('pong-cpu-score');
     if (!dialog || !trigger || !canvas || !toggle || !reset || !close || !status || !youScore || !cpuScore ||
       typeof dialog.showModal !== 'function' || !window.PetriPongEngine) return;
-    const context = canvas.getContext('2d');
+    const context = canvas.getContext('2d', { alpha: false });
     if (!context) return;
     const { COURT, PongGame, ResistanceTransfer } = window.PetriPongEngine;
     const game = new PongGame();
     const transfer = new ResistanceTransfer();
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mobile = window.matchMedia('(max-width: 600px), (pointer: coarse)');
+    const goal = COURT.winningScore === 3 ? 'three' : String(COURT.winningScore);
+    if (description) description.textContent = `Two bacteria. One plasmid. First to ${goal}.`;
     const keys = new Set();
     let palette;
     let frameId = 0;
     let lastFrame = null;
+    let nextFrame = null;
     let lastStatus = '';
     let previousFocus;
     let typed = '';
     let lastKeyAt = 0;
     let backdropPointer = false;
     let activePointer = null;
+    let pointerY = null;
+    let courtBounds;
+    let graphics;
 
     const footer = document.querySelector('.nav-footer-right') || document.querySelector('.nav-footer-left');
     if (footer) footer.appendChild(trigger);
@@ -48,7 +56,7 @@
       };
     };
 
-    const drawPlasmid = (x, y, radius = COURT.ballRadius, angle = -.6) => {
+    const paintPlasmid = (context, x, y, radius = COURT.ballRadius, angle = -.6) => {
       context.save();
       context.translate(x, y);
       context.rotate(angle);
@@ -68,7 +76,7 @@
       context.restore();
     };
 
-    const cellPath = (width, height) => {
+    const cellPath = (context, width, height) => {
       const radius = width / 2;
       context.beginPath();
       context.arc(0, -height / 2 + radius, radius, Math.PI, Math.PI * 2);
@@ -77,12 +85,10 @@
       context.closePath();
     };
 
-    const drawBacterium = (cell, side) => {
-      const zombie = transfer.transformed && transfer.recipient === side;
+    const paintBacterium = (context, side, zombie) => {
       const player = side === 'player';
       const color = zombie ? palette.zombieStroke : player ? palette.sage : palette.cpuStroke;
       context.save();
-      context.translate(cell.x, cell.y);
       context.strokeStyle = color;
       context.lineWidth = 2;
       context.lineCap = 'round';
@@ -95,11 +101,11 @@
       context.moveTo(-6, 42); context.bezierCurveTo(-19, 47, 9, 49, -6, 55);
       context.moveTo(6, -42); context.bezierCurveTo(17, -47, -10, -50, 7, -55);
       context.stroke();
-      cellPath(66, 88);
+      cellPath(context, 66, 88);
       context.fillStyle = zombie ? palette.zombie : player ? palette.playerCell : palette.cpuCell;
       context.fill();
       context.stroke();
-      cellPath(55, 77);
+      cellPath(context, 55, 77);
       context.globalAlpha = .25;
       context.lineWidth = 1;
       context.stroke();
@@ -127,18 +133,69 @@
       context.globalAlpha = .55;
       context.beginPath(); context.moveTo(-10, 26); context.bezierCurveTo(12, 19, -13, 32, 10, 29); context.stroke();
       context.restore();
-      if (transfer.phase !== 'idle' && (side === transfer.winner || zombie)) drawPlasmid(cell.x, cell.y + 26, 6);
+    };
+
+    // Vector artwork stays crisp, but its paths only need painting on resize/theme changes.
+    const buildGraphics = () => {
+      const scale = canvas.width / COURT.width;
+      const sprite = (width, height, paint) => {
+        const layer = document.createElement('canvas');
+        layer.width = Math.ceil(width * scale);
+        layer.height = Math.ceil(height * scale);
+        const brush = layer.getContext('2d');
+        brush.setTransform(layer.width / width, 0, 0, layer.height / height, layer.width / 2, layer.height / 2);
+        paint(brush);
+        return { image: layer, width, height };
+      };
+      const court = document.createElement('canvas');
+      court.width = canvas.width;
+      court.height = canvas.height;
+      const brush = court.getContext('2d', { alpha: false });
+      brush.setTransform(court.width / COURT.width, 0, 0, court.height / COURT.height, 0, 0);
+      brush.fillStyle = palette.paper;
+      brush.fillRect(0, 0, COURT.width, COURT.height);
+      brush.strokeStyle = palette.rule;
+      brush.lineWidth = 1.5;
+      brush.setLineDash([5, 11]);
+      brush.beginPath(); brush.moveTo(COURT.width / 2, 24); brush.lineTo(COURT.width / 2, COURT.height - 24); brush.stroke();
+      graphics = {
+        court,
+        player: sprite(96, 120, (brush) => paintBacterium(brush, 'player', false)),
+        cpu: sprite(96, 120, (brush) => paintBacterium(brush, 'cpu', false)),
+        playerZombie: sprite(96, 120, (brush) => paintBacterium(brush, 'player', true)),
+        cpuZombie: sprite(96, 120, (brush) => paintBacterium(brush, 'cpu', true)),
+        plasmid: sprite(32, 32, (brush) => paintPlasmid(brush, 0, 0)),
+        genePlasmid: sprite(18, 18, (brush) => paintPlasmid(brush, 0, 0, 6)),
+      };
+    };
+
+    const drawSprite = (sprite, x, y) => {
+      context.drawImage(sprite.image, x - sprite.width / 2, y - sprite.height / 2, sprite.width, sprite.height);
+    };
+
+    const cellPosition = (side) => {
+      const cell = game[side];
+      const progress = transfer.approachProgress;
+      const targetX = COURT.width / 2 + (side === 'player' ? -78 : 78);
+      return { x: cell.x + (targetX - cell.x) * progress, y: cell.y + (COURT.height / 2 - cell.y) * progress };
+    };
+
+    const drawBacterium = (side) => {
+      const cell = cellPosition(side);
+      const zombie = transfer.transformed && transfer.recipient === side;
+      drawSprite(graphics[zombie ? `${side}Zombie` : side], cell.x, cell.y);
+      if (transfer.phase !== 'idle' && (side === transfer.winner || zombie)) drawSprite(graphics.genePlasmid, cell.x, cell.y + 26);
     };
 
     const transferPath = () => {
-      const donor = game[transfer.winner];
-      const recipient = game[transfer.recipient];
+      const donor = cellPosition(transfer.winner);
+      const recipient = cellPosition(transfer.recipient);
       const direction = recipient.x > donor.x ? 1 : -1;
       return { x1: donor.x + direction * 33, y1: donor.y, x2: recipient.x - direction * 33, y2: recipient.y };
     };
 
     const drawPilus = () => {
-      if (transfer.phase === 'idle') return;
+      if (!transfer.extension) return;
       const { x1, y1, x2, y2 } = transferPath();
       const endX = x1 + (x2 - x1) * transfer.extension;
       const endY = y1 + (y2 - y1) * transfer.extension;
@@ -171,19 +228,14 @@
     };
 
     const draw = () => {
-      if (!palette) updatePalette();
+      if (!graphics) return;
+      context.setTransform(1, 0, 0, 1, 0, 0);
+      context.drawImage(graphics.court, 0, 0);
       context.setTransform(canvas.width / COURT.width, 0, 0, canvas.height / COURT.height, 0, 0);
-      context.fillStyle = palette.paper;
-      context.fillRect(0, 0, COURT.width, COURT.height);
-      context.strokeStyle = palette.rule;
-      context.lineWidth = 1.5;
-      context.setLineDash([5, 11]);
-      context.beginPath(); context.moveTo(COURT.width / 2, 24); context.lineTo(COURT.width / 2, COURT.height - 24); context.stroke();
-      context.setLineDash([]);
       drawPilus();
-      drawBacterium(game.player, 'player');
-      drawBacterium(game.cpu, 'cpu');
-      if (game.state !== 'finished') drawPlasmid(game.ball.x, game.ball.y);
+      drawBacterium('player');
+      drawBacterium('cpu');
+      if (game.state !== 'finished') drawSprite(graphics.plasmid, game.ball.x, game.ball.y);
       drawGene();
 
       let label = '';
@@ -191,6 +243,7 @@
       else if (game.state === 'paused') label = 'Paused';
       else if (game.state === 'finished') {
         if (transfer.paused) label = 'Transfer paused';
+        else if (transfer.phase === 'approaching') label = 'Coming together…';
         else if (transfer.phase === 'growing') label = 'Growing a pilus…';
         else if (transfer.phase === 'sending') label = 'Resistance gene in transit';
         else label = 'Resistance acquired. Zombie mode.';
@@ -198,19 +251,13 @@
       if (label) {
         context.fillStyle = palette.paper;
         context.globalAlpha = .94;
-        context.fillRect(COURT.width / 2 - 180, COURT.height / 2 + 34, 360, 48);
+        context.fillRect(COURT.width / 2 - 180, COURT.height / 2 + 80, 360, 48);
         context.globalAlpha = 1;
         context.fillStyle = palette.muted;
         context.font = '500 18px system-ui, sans-serif';
         context.textAlign = 'center';
-        context.fillText(label, COURT.width / 2, COURT.height / 2 + 64);
+        context.fillText(label, COURT.width / 2, COURT.height / 2 + 110);
       }
-      canvas.dataset.playerY = String(Math.round(game.player.y));
-      canvas.dataset.ballX = String(Math.round(game.ball.x));
-      canvas.dataset.ballY = String(Math.round(game.ball.y));
-      canvas.dataset.rally = String(game.rally);
-      canvas.dataset.transferProgress = (transfer.elapsed / transfer.duration).toFixed(3);
-      canvas.dataset.recipientState = transfer.transformed ? 'resistant-zombie' : 'normal';
     };
 
     const sync = () => {
@@ -221,6 +268,7 @@
       dialog.dataset.transfer = transfer.paused ? 'paused' : transfer.phase;
       dialog.dataset.winner = transfer.winner || '';
       dialog.dataset.recipient = transfer.recipient || '';
+      canvas.dataset.recipientState = transfer.transformed ? 'resistant-zombie' : 'normal';
       youScore.textContent = String(game.player.score);
       cpuScore.textContent = String(game.cpu.score);
       toggle.textContent = game.state === 'finished' && transfer.active ? (transfer.paused ? 'Resume' : 'Pause') :
@@ -231,22 +279,25 @@
         const winner = game.winner === 'player' ? 'You win!' : 'The lab bacterium wins.';
         const recipient = transfer.recipient === 'player' ? 'Your bacterium' : 'The lab bacterium';
         const result = transfer.paused ? 'Gene transfer paused. Resume whenever you’re ready.' :
+          transfer.phase === 'approaching' ? 'The bacteria come together to share a resistance gene.' :
           transfer.phase === 'growing' ? 'The winner grows a pilus to share a resistance gene.' :
           transfer.phase === 'sending' ? 'The resistance gene travels through the pilus…' :
           `${recipient} gains resistance and becomes a resistant zombie.`;
         status.textContent = `${winner} ${game.player.score}–${game.cpu.score}. ${result}`;
       }
-      else if (game.player.score || game.cpu.score) status.textContent = `You ${game.player.score}, lab bacterium ${game.cpu.score}. First to five.`;
-      else status.textContent = 'Keep the plasmid in play. First to five.';
+      else if (game.player.score || game.cpu.score) status.textContent = `You ${game.player.score}, lab bacterium ${game.cpu.score}. First to ${goal}.`;
+      else status.textContent = `Keep the plasmid in play. First to ${goal}.`;
     };
 
     const stopLoop = () => {
       if (frameId) cancelAnimationFrame(frameId);
       frameId = 0;
       lastFrame = null;
+      nextFrame = null;
       keys.clear();
       if (activePointer !== null && canvas.hasPointerCapture(activePointer)) canvas.releasePointerCapture(activePointer);
       activePointer = null;
+      pointerY = null;
     };
 
     const pause = () => {
@@ -262,8 +313,15 @@
     const frame = (time) => {
       frameId = 0;
       if (!dialog.open || document.hidden || !shouldAnimate()) { pause(); return; }
+      // High-refresh phones do not need to paint this small game 120 times a second.
+      if (nextFrame !== null && time < nextFrame - 1) {
+        frameId = requestAnimationFrame(frame);
+        return;
+      }
       const dt = lastFrame === null ? 0 : (time - lastFrame) / 1000;
       lastFrame = time;
+      nextFrame = Math.max((nextFrame ?? time) + 1000 / 60, time);
+      if (pointerY !== null) { game.setPlayerY(pointerY); pointerY = null; }
       const up = keys.has('w') || keys.has('arrowup');
       const down = keys.has('s') || keys.has('arrowdown');
       if (game.state === 'playing') game.step(dt, Number(down) - Number(up));
@@ -292,6 +350,7 @@
       sync();
       draw();
       lastFrame = null;
+      nextFrame = null;
       if (!frameId) frameId = requestAnimationFrame(frame);
       canvas.focus({ preventScroll: true });
     };
@@ -299,12 +358,14 @@
     const resize = () => {
       if (!dialog.open) return;
       const bounds = canvas.getBoundingClientRect();
+      courtBounds = bounds;
       if (!bounds.width || !bounds.height) return;
-      const ratio = Math.min(window.devicePixelRatio || 1, 3);
+      const ratio = Math.min(window.devicePixelRatio || 1, mobile.matches ? 1.5 : 2);
       const width = Math.round(bounds.width * ratio);
       const height = Math.round(bounds.height * ratio);
       if (canvas.width !== width || canvas.height !== height) { canvas.width = width; canvas.height = height; }
       updatePalette();
+      buildGraphics();
       draw();
     };
 
@@ -365,14 +426,16 @@
     document.addEventListener('keyup', (event) => keys.delete(event.key.toLowerCase()));
 
     const movePointer = (event) => {
-      const bounds = canvas.getBoundingClientRect();
-      game.setPlayerY((event.clientY - bounds.top) / bounds.height * COURT.height);
-      if (game.state !== 'playing') draw();
+      if (game.state === 'finished' || !courtBounds?.height) return;
+      const y = (event.clientY - courtBounds.top) / courtBounds.height * COURT.height;
+      if (game.state === 'playing') pointerY = y;
+      else { game.setPlayerY(y); draw(); }
     };
     canvas.addEventListener('pointerdown', (event) => {
       if (game.state === 'finished' || (event.pointerType === 'mouse' && event.button !== 0) || activePointer !== null) return;
       event.preventDefault();
       activePointer = event.pointerId;
+      courtBounds = canvas.getBoundingClientRect();
       canvas.setPointerCapture(activePointer);
       canvas.focus({ preventScroll: true });
       movePointer(event);
@@ -413,8 +476,9 @@
     if (motion.addEventListener) motion.addEventListener('change', updateMotion);
     else motion.addListener(updateMotion);
     window.addEventListener('resize', resize);
+    dialog.addEventListener('scroll', () => { courtBounds = canvas.getBoundingClientRect(); }, { passive: true });
     if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas);
-    const themeObserver = new MutationObserver(() => { if (dialog.open) { updatePalette(); draw(); } });
+    const themeObserver = new MutationObserver(() => { if (dialog.open) { updatePalette(); buildGraphics(); draw(); } });
     themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-bs-theme'] });
     themeObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
     sync();

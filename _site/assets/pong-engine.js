@@ -123,7 +123,7 @@
 
     reset() {
       this.elapsed = 0;
-      this.duration = 2.6;
+      this.duration = 3.4;
       this.winner = null;
       this.recipient = null;
       this.paused = false;
@@ -131,15 +131,19 @@
     }
 
     get active() { return this.phase !== 'idle' && this.phase !== 'complete'; }
-    get extension() { return clamp(this.elapsed / .7, 0, 1); }
-    get geneProgress() { return clamp((this.elapsed - .7) / 1.2, 0, 1); }
-    get transformed() { return this.phase !== 'idle' && this.elapsed >= 1.9; }
+    get approachProgress() {
+      const progress = clamp(this.elapsed / .8, 0, 1);
+      return progress * progress * (3 - 2 * progress);
+    }
+    get extension() { return clamp((this.elapsed - .8) / .7, 0, 1); }
+    get geneProgress() { return clamp((this.elapsed - 1.5) / 1.2, 0, 1); }
+    get transformed() { return this.phase !== 'idle' && this.elapsed >= 2.7; }
 
     begin(winner, reducedMotion = false) {
       this.reset();
       this.winner = winner;
       this.recipient = winner === 'player' ? 'cpu' : 'player';
-      this.phase = 'growing';
+      this.phase = 'approaching';
       if (reducedMotion) this.complete();
     }
 
@@ -157,8 +161,9 @@
       if (!this.active || this.paused || !Number.isFinite(seconds) || seconds <= 0) return;
       this.elapsed = Math.min(this.duration, this.elapsed + Math.min(seconds, .05));
       if (this.elapsed >= this.duration) this.complete();
-      else if (this.elapsed >= 1.9) this.phase = 'transformed';
-      else if (this.elapsed >= .7) this.phase = 'sending';
+      else if (this.elapsed >= 2.7) this.phase = 'transformed';
+      else if (this.elapsed >= 1.5) this.phase = 'sending';
+      else if (this.elapsed >= .8) this.phase = 'growing';
     }
   }
 

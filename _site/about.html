@@ -364,11 +364,16 @@ ul.task-list li input[type="checkbox"] {
     const stylesheet = document.querySelector('link[href$="assets/easter-egg.css"]');
     const offset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
     const assetsBase = stylesheet ? new URL('./', stylesheet.href) : new URL(offset + 'assets/', document.baseURI);
+    const assetVersion = 'pong-three-close-transfer';
     const engine = document.createElement('script');
-    engine.src = new URL('pong-engine.js', assetsBase).href;
+    const engineUrl = new URL('pong-engine.js', assetsBase);
+    engineUrl.searchParams.set('v', assetVersion);
+    engine.src = engineUrl.href;
     engine.onload = () => {
       const script = document.createElement('script');
-      script.src = new URL('site.js', assetsBase).href;
+      const siteUrl = new URL('site.js', assetsBase);
+      siteUrl.searchParams.set('v', assetVersion);
+      script.src = siteUrl.href;
       document.head.appendChild(script);
     };
     document.head.appendChild(engine);
