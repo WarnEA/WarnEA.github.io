@@ -1,0 +1,59 @@
+project:
+  type: website
+  resources:
+    - assets/site.js
+    - assets/pong-engine.js
+    - assets/orcid.svg
+
+website:
+  title: "Anthony Warnecke"
+  search: false
+  description: "Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution."
+  favicon: assets/favicon.svg
+  navbar:
+    title: "Anthony Warnecke"
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: projects.qmd
+        text: Research
+      - href: writing.qmd
+        text: Writing
+      - href: CV.qmd
+        text: CV
+    tools-collapse: false
+    tools:
+      - icon: bluesky
+        href: https://bsky.app/profile/warneckeanthony.bsky.social
+        text: Bluesky
+        aria-label: Bluesky
+      - icon: linkedin
+        href: https://www.linkedin.com/in/anthony-warnecke-5330b6234/
+        text: LinkedIn
+        aria-label: LinkedIn
+      - icon: orcid
+        href: https://orcid.org/0009-0006-2866-6623
+        text: ORCID
+        aria-label: ORCID
+      - icon: github
+        href: https://github.com/WarnEA
+        text: GitHub
+        aria-label: GitHub
+  draft-mode: unlinked
+  page-footer:
+    left: "© 2026 Anthony Warnecke"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: cyborg
+    css:
+      - styles.css
+      - writing.css
+      - assets/easter-egg.css
+    include-after-body: assets/site-extras.html
+    toc: false
+    smooth-scroll: true

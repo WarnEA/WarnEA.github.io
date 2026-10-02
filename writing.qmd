@@ -1,0 +1,28 @@
+---
+title: "Writing"
+page-layout: full
+body-classes: writing-index
+toc: false
+anchor-sections: false
+listing:
+  id: writing-notes
+  contents: posts
+  sort: "date desc"
+  type: custom
+  template: assets/writing-list.ejs
+  fields: [title, date, description, reading-time]
+  date-format: "D MMM YYYY"
+  sort-ui: false
+  filter-ui: false
+  categories: false
+  max-description-length: 180
+---
+
+```{=html}
+<div class="writing-heading">
+  <p>Notes on microbial genetics, genomics and bacterial evolution.</p>
+</div>
+```
+
+::: {#writing-notes}
+:::

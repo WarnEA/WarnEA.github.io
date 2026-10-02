@@ -1,0 +1,24 @@
+---
+title: "About me"
+toc: false
+---
+
+::: {.page-lead}
+I am a PhD student at the **University of Liverpool**, interested in how the smallest pieces of genetic information can shape bacterial behaviour and evolution.
+:::
+
+My previous projects have explored plant connectivity, rhizobacteria and insect–plant interactions, and the genomic diversity of gut Clostridia.
+
+## Education
+
+```{=html}
+<div class="education-list">
+  <div class="education-entry"><p>2026–present</p><div><h3>PhD Biological Sciences</h3><p>Evolution, Ecology and Behaviour · University of Liverpool</p></div></div>
+  <div class="education-entry"><p>2025–2026</p><div><h3>MRes Infection, Microbiology and Microbiomes</h3><p>University of Liverpool</p></div></div>
+  <div class="education-entry"><p>2022–2025</p><div><h3>BSc (Hons) Microbiology</h3><p>First Class Honours · University of Liverpool</p></div></div>
+</div>
+```
+
+## Research interests
+
+Plasmid biology · microbial genetics · antimicrobial resistance · bacterial evolution · genomics · host–microbe interactions

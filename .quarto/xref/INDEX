@@ -1,0 +1,20 @@
+{
+  "posts/genomics.qmd": {
+    "genomics.html": "355b2369"
+  },
+  "projects.qmd": {
+    "projects.html": "201e50f1"
+  },
+  "index.qmd": {
+    "index.html": "786389d7"
+  },
+  "about.qmd": {
+    "about.html": "ca42d787"
+  },
+  "writing.qmd": {
+    "writing.html": "c489a132"
+  },
+  "CV.qmd": {
+    "CV.html": "9a478c34"
+  }
+}

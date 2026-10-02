@@ -1,0 +1,135 @@
+[
+  {
+    "objectID": "CV.html",
+    "href": "CV.html",
+    "title": "Curriculum vitae",
+    "section": "",
+    "text": "Anthony Warnecke · Microbial genetics · University of Liverpool\n  Print / save as PDF ↗"
+  },
+  {
+    "objectID": "CV.html#education",
+    "href": "CV.html#education",
+    "title": "Curriculum vitae",
+    "section": "Education",
+    "text": "Education\n\nPhD Biological Sciences (Evolution, Ecology & Behaviour)\nUniversity of Liverpool · 2026–present\nEvolution, Ecology and Behaviour. MRC-funded research on plasmid-mediated changes to bacterial behaviour.\n\n\nMRes Infection, Microbiology & Microbiomes\nUniversity of Liverpool · 2025–2026\nComparative metagenomics of gut Clostridia.\n\n\nBSc (Hons) Microbiology\nUniversity of Liverpool · 2022–2025\nFirst Class Honours"
+  },
+  {
+    "objectID": "CV.html#technical-skills",
+    "href": "CV.html#technical-skills",
+    "title": "Curriculum vitae",
+    "section": "Technical skills",
+    "text": "Technical skills\nMicrobiology\nBacterial culture · aseptic technique · viable counts · antimicrobial assays · phage assays\nMolecular biology\nDNA/RNA extraction · RT-qPCR · DAS-ELISA\nGenomics\nShotgun metagenomics · MAG recovery · comparative genomics · phylogenomics · ANI\nMicroscopy\nFIB-SEM · confocal microscopy · fluorescence microscopy · 3D reconstruction\nComputing\nR · Python · Bash · Linux · HPC"
+  },
+  {
+    "objectID": "CV.html#memberships",
+    "href": "CV.html#memberships",
+    "title": "Curriculum vitae",
+    "section": "Memberships",
+    "text": "Memberships\nAMRSB · Royal Society of Biology\nMember · Microbiology Society\nMember (Mem.Res) · Royal Entomological Society"
+  },
+  {
+    "objectID": "CV.html#research-experience",
+    "href": "CV.html#research-experience",
+    "title": "Curriculum vitae",
+    "section": "Research experience",
+    "text": "Research experience\n\nPhD Student\nUniversity of Liverpool · 2026–present\nInvestigating how multidrug-resistance plasmids alter bacterial behaviour and evolutionary dynamics in P. aeruginosa.\n\n\nMRes Research Project\nUniversity of Liverpool · 2025–2026\nSupervisor: Prof. Alistair Darby\nGenomic and ecological differences in gut Clostridia, with a focus on Clostridium perfringens.\nMethods: shotgun metagenomics · MAG recovery · diversity analysis · ANI · phylogenomics · HPC\nSoftware: Kraken2 · Bracken · MetaWRAP · MEGAHIT · CheckM · FastANI · dRep · R · Bash\n\n\nUndergraduate Dissertation\nUniversity of Liverpool · 2024–2025\nSupervisor: Dr Daniel Leybourne\nRhizobacteria-mediated changes to barley responses to Sitobion avenae and barley yellow dwarf virus.\nMethods: bacterial culture · plant/aphid experiments · DAS-ELISA · mixed-effects modelling\nOutput: Royal Entomological Society Student Forum 2025\n\n\nUNIQ+ Research Internship\nUniversity of Oxford — Langdale Lab · Summer 2024\nSupervisor: Dr Tina Schreier\nPlasmodesmata distribution across the C3–C4 evolutionary gradient in Flaveria.\nMethods: FIB-SEM · confocal microscopy · image segmentation · 3D reconstruction\nSoftware: Fiji · ImageJ · Amira · R · Plotly\nOutput: Best Presentation Prize, Oxford Summer Research Symposium"
+  },
+  {
+    "objectID": "CV.html#awards-funding",
+    "href": "CV.html#awards-funding",
+    "title": "Curriculum vitae",
+    "section": "Awards & funding",
+    "text": "Awards & funding\nMRC-funded PhD Studentship · University of Liverpool · 2026–\nUNIQ+ Research Internship · University of Oxford · 2024\nBest Presentation Prize · University of Oxford · 2024"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About me",
+    "section": "",
+    "text": "I am a PhD student at the University of Liverpool, interested in how the smallest pieces of genetic information can shape bacterial behaviour and evolution.\nMy previous projects have explored plant connectivity, rhizobacteria and insect–plant interactions, and the genomic diversity of gut Clostridia."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About me",
+    "section": "Education",
+    "text": "Education\n\n  2026–presentPhD Biological SciencesEvolution, Ecology and Behaviour · University of Liverpool\n  2025–2026MRes Infection, Microbiology and MicrobiomesUniversity of Liverpool\n  2022–2025BSc (Hons) MicrobiologyFirst Class Honours · University of Liverpool"
+  },
+  {
+    "objectID": "about.html#research-interests",
+    "href": "about.html#research-interests",
+    "title": "About me",
+    "section": "Research interests",
+    "text": "Research interests\nPlasmid biology · microbial genetics · antimicrobial resistance · bacterial evolution · genomics · host–microbe interactions"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Research",
+    "section": "",
+    "text": "Projects in microbial genetics, genomics and host–microbe interactions."
+  },
+  {
+    "objectID": "projects.html#phd-microbial-genetics",
+    "href": "projects.html#phd-microbial-genetics",
+    "title": "Research",
+    "section": "PhD — Microbial Genetics",
+    "text": "PhD — Microbial Genetics\nUniversity of Liverpool\nPlasmid manipulation of bacterial behaviour in Pseudomonas aeruginosa.\n\n\nProject details & methods\n\nInvestigating how antimicrobial-resistance plasmids alter bacterial behaviour and evolutionary dynamics, with a focus on plasmid–host interactions, social behaviour and adaptation.\nMethods: bacterial phenotyping · microbial genetics · experimental evolution · quantitative analysis"
+  },
+  {
+    "objectID": "projects.html#mres-gut-microbial-genomics",
+    "href": "projects.html#mres-gut-microbial-genomics",
+    "title": "Research",
+    "section": "MRes — Gut Microbial Genomics",
+    "text": "MRes — Gut Microbial Genomics\nUniversity of Liverpool\nComparative genomics of Clostridia in healthy and diarrhoeal gut microbiomes.\n\n\nProject details & methods\n\nInvestigated genomic and ecological differences in gut Clostridia, with particular focus on Clostridium perfringens, virulence-associated variation and strain diversity.\nMethods: shotgun metagenomics · MAG recovery · diversity analysis · ANI · phylogenomics · HPC"
+  },
+  {
+    "objectID": "projects.html#bsc---plant-microbe-interactions",
+    "href": "projects.html#bsc---plant-microbe-interactions",
+    "title": "Research",
+    "section": "BSc - Plant-Microbe Interactions",
+    "text": "BSc - Plant-Microbe Interactions\nUniversity of Liverpool\nRhizobacteria, aphids and barley yellow dwarf virus.\n\n\nProject details & methods\n\nInvestigated whether rhizobacterial inoculation could alter barley responses to Sitobion avenae and aphid-vectored barley yellow dwarf virus.\nMethods: bacterial culture · plant/aphid experiments · DAS-ELISA · mixed-effects modelling"
+  },
+  {
+    "objectID": "projects.html#uniq-research-internship---photosynthesis-evolution",
+    "href": "projects.html#uniq-research-internship---photosynthesis-evolution",
+    "title": "Research",
+    "section": "UNIQ+ Research Internship - Photosynthesis Evolution",
+    "text": "UNIQ+ Research Internship - Photosynthesis Evolution\nUniversity of Oxford\nPlasmodesmata distribution across the C3–C4 evolutionary gradient in Flaveria.\n\n\nProject details & methods\n\nInvestigated changes in mesophyll–bundle sheath connectivity during the evolution of C4 photosynthesis.\nMethods: FIB-SEM · confocal microscopy · image segmentation · 3D reconstruction"
+  },
+  {
+    "objectID": "posts/genomics.html",
+    "href": "posts/genomics.html",
+    "title": "Why plasmids are more than resistance vectors",
+    "section": "",
+    "text": "← All writing\nThat wider relationship is the starting point for my PhD at the University of Liverpool. I study how antimicrobial-resistance plasmids influence bacterial behaviour and evolution, with a focus on plasmid–host interactions in Pseudomonas aeruginosa."
+  },
+  {
+    "objectID": "posts/genomics.html#a-gene-is-only-part-of-the-question",
+    "href": "posts/genomics.html#a-gene-is-only-part-of-the-question",
+    "title": "Why plasmids are more than resistance vectors",
+    "section": "A gene is only part of the question",
+    "text": "A gene is only part of the question\nWhen thinking about a resistance plasmid, it is natural to ask which resistance genes it carries. My research begins with a related question: what changes when a bacterium acquires the plasmid?\nThat question shifts attention towards the host. What happens to its phenotype? Does its social behaviour change? How does the relationship between plasmid and bacterium develop as they evolve together? These are the questions I want to investigate, rather than treating resistance as the only feature that matters."
+  },
+  {
+    "objectID": "posts/genomics.html#looking-at-behaviour-and-evolution-together",
+    "href": "posts/genomics.html#looking-at-behaviour-and-evolution-together",
+    "title": "Why plasmids are more than resistance vectors",
+    "section": "Looking at behaviour and evolution together",
+    "text": "Looking at behaviour and evolution together\nMy project brings together bacterial phenotyping, microbial genetics, experimental evolution and quantitative analysis. Each offers a different way to examine the relationship between a plasmid and its host.\nPhenotyping puts bacterial behaviour at the centre of the work. Experimental evolution adds the question of how that relationship changes over time. Together, these approaches frame the project around both the immediate effects of acquiring a plasmid and the longer-term dynamics of adaptation.\nThe aim is to understand the connection between mobile DNA, the cells that carry it and the ways bacteria adapt. This note sets out the questions motivating that work; the research itself is ongoing.\n\nMore about my PhD research →"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Anthony Warnecke",
+    "section": "",
+    "text": "PhD Student · University of Liverpool\n  Anthony Warnecke\n  I study how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution."
+  },
+  {
+    "objectID": "writing.html",
+    "href": "writing.html",
+    "title": "Writing",
+    "section": "",
+    "text": "Notes on microbial genetics, genomics and bacterial evolution.\n\n\n\n\n  \n    Why plasmids are more than resistance vectors\n    \n      2 Oct 2026\n      ·\n      2 min\n    \n    The questions behind my PhD: how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution.\n  \n\n\nNo matching items"
+  }
+]

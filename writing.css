@@ -1,0 +1,125 @@
+/* A simple publication index and a comfortable measure for longer reading. */
+body.writing-index #quarto-content { padding-top: 0; }
+body.writing-index main.content {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  padding-bottom: 5rem;
+}
+.writing-index #title-block-header { margin-block: 3.5rem 1rem; }
+.writing-heading {
+  padding-bottom: 2rem;
+}
+.writing-heading > p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.writing-index .quarto-listing { margin: 0; }
+.writing-list { border-top: 1px solid var(--rule); }
+.writing-entry {
+  padding-block: 1.8rem 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+.writing-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  color: var(--muted);
+  font-size: .76rem;
+  margin-block: .65rem .8rem;
+}
+.writing-entry-meta time { font-variant-numeric: tabular-nums; }
+.writing-index main.content .writing-entry .listing-title {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3vw, 1.95rem);
+  line-height: 1.3;
+  font-weight: 400;
+  letter-spacing: -.025em;
+}
+.writing-entry .listing-title a { color: var(--ink); text-decoration: none; }
+.writing-entry .listing-title a:hover { color: var(--sage); text-decoration: underline; }
+.writing-entry .listing-description {
+  color: var(--muted);
+  font-size: .93rem;
+  line-height: 1.75;
+  margin: 0;
+}
+body.writing-article main.content { max-width: 720px; margin-inline: auto; padding-bottom: 4.5rem; }
+.writing-article #title-block-header { margin-block: 3.5rem 2rem; }
+.writing-article .quarto-title h1 {
+  font-size: clamp(2.5rem, 4.5vw, 3.65rem);
+  line-height: 1.12;
+  letter-spacing: -.04em;
+}
+.writing-article .quarto-title-meta {
+  margin-top: 1.75rem;
+  padding-block: 1.15rem;
+  border-block: 1px solid var(--rule);
+  column-gap: 2.5rem;
+}
+.writing-article .quarto-title-meta-heading {
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .09em;
+  color: var(--muted);
+}
+.writing-article .quarto-title-meta-contents {
+  font-size: .78rem;
+  color: var(--ink);
+}
+.writing-article .quarto-title-meta-contents p { margin: 0; }
+.writing-article .article-back-link {
+  display: inline-block;
+  font-size: .76rem;
+  text-decoration: none;
+  margin-bottom: 1.35rem;
+}
+.writing-article .article-back-link:hover { text-decoration: underline; }
+.writing-article main.content > p,
+.writing-article main.content > section > p {
+  font-size: .99rem;
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+.writing-article .article-lead {
+  font-family: var(--serif);
+  font-size: 1.33rem;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 1.6rem;
+}
+.writing-article .article-lead p { margin: 0; }
+.writing-article main.content h2 {
+  font-size: 1.75rem;
+  line-height: 1.3;
+  letter-spacing: -.025em;
+  border: 0;
+  padding: 0;
+  margin-block: 2.5rem 1rem;
+}
+.writing-article .article-endnote {
+  border-top: 1px solid var(--rule);
+  margin-top: 2.75rem;
+  padding-top: 1.5rem;
+  font-size: .8rem;
+}
+.writing-article .article-endnote p { margin: 0; }
+@media (min-width: 992px) {
+  body.writing-index #quarto-content { padding-inline: 32px; }
+}
+@media (max-width: 600px) {
+  .writing-index #title-block-header { margin-top: 2.5rem; }
+  .writing-heading { padding-bottom: 1.5rem; }
+  .writing-entry { padding-block: 1.5rem; }
+  .writing-entry .listing-description { font-size: .9rem; }
+  .writing-article #title-block-header { margin-top: 2rem; }
+  .writing-article .quarto-title-meta { column-gap: 1.5rem; }
+  .writing-article .article-lead { font-size: 1.22rem; }
+  .writing-article main.content > p,
+  .writing-article main.content > section > p { font-size: .94rem; line-height: 1.85; }
+}

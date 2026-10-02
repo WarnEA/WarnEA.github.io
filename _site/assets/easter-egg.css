@@ -1,0 +1,116 @@
+/* Quiet discovery; a self-contained court only appears on request. */
+.culture-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: .45rem;
+  padding: 0;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: color .18s ease, border-color .18s ease;
+}
+.culture-trigger:hover { color: var(--sage); border-color: var(--rule); }
+.nav-footer-right:has(.culture-trigger) { display: flex; align-items: center; justify-content: flex-end; }
+.culture-dialog {
+  width: min(790px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 20px 80px rgb(0 0 0 / .2);
+}
+.culture-dialog:not([open]) { display: none; }
+.culture-dialog::backdrop { background: rgb(15 22 18 / .55); }
+.culture-panel { position: relative; padding: 1.7rem 1.7rem 1.3rem; text-align: center; }
+.culture-close {
+  position: absolute;
+  top: .55rem;
+  right: .55rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.culture-close:hover { color: var(--ink); background: var(--surface); }
+.culture-eyebrow {
+  margin: 0 0 .45rem;
+  color: var(--sage);
+  font-size: .62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+.culture-dialog h2 {
+  margin: 0 0 .4rem;
+  padding: 0;
+  border: 0;
+  font-family: var(--serif);
+  font-size: 2.15rem;
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1.2;
+}
+#culture-description { margin: 0; color: var(--muted); font-size: .8rem; line-height: 1.6; }
+.pong-scoreboard { display: flex; align-items: center; justify-content: center; gap: 1.15rem; margin: 1rem 0 .7rem; font-size: .72rem; color: var(--muted); }
+.pong-scoreboard > span:not(.pong-score-separator) { display: flex; align-items: center; gap: .8rem; min-width: 130px; }
+.pong-scoreboard > span:first-child { justify-content: flex-end; }
+.pong-scoreboard strong { color: var(--ink); font-weight: 500; font-size: 1.5rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.pong-score-separator { color: var(--rule); font-size: 1.2rem; }
+.pong-court {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  touch-action: none;
+  cursor: grab;
+}
+.pong-court:active { cursor: grabbing; }
+.culture-status { min-height: 1.5em; margin: .8rem 0; color: var(--muted); font-size: .75rem; line-height: 1.5; }
+.culture-dialog[data-pong-state="finished"] .culture-status { max-width: 620px; margin-inline: auto; }
+.culture-actions { display: flex; align-items: center; justify-content: center; gap: 1.2rem; }
+.culture-actions button { font: inherit; font-size: .77rem; cursor: pointer; }
+.pong-toggle { min-width: 126px; padding: .6rem 1rem; border: 1px solid var(--sage); border-radius: 3px; background: var(--sage); color: var(--paper); }
+.pong-toggle:hover { border-color: var(--ink); background: var(--ink); }
+.pong-reset { padding: .5rem .35rem; border: 0; background: transparent; color: var(--muted); text-decoration: underline; text-underline-offset: .25em; }
+.pong-reset:hover { color: var(--ink); }
+.pong-instructions { margin: .85rem 0 0; color: var(--muted); font-size: .67rem; line-height: 1.8; }
+.pong-instructions kbd { padding: 0 .12rem; border: 0; border-radius: 0; background: transparent; color: inherit; font: inherit; font-weight: 600; box-shadow: none; }
+.culture-dialog button:focus-visible, .culture-trigger:focus-visible, .pong-court:focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; }
+@media (max-width: 480px) {
+  .culture-panel { padding: 1.6rem .85rem 1rem; }
+  .culture-dialog { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); }
+  .culture-dialog h2 { font-size: 1.9rem; }
+  .pong-scoreboard { gap: .75rem; }
+  .pong-scoreboard > span:not(.pong-score-separator) { min-width: 105px; }
+  .pong-instructions { font-size: .65rem; }
+  .nav-footer-right:has(.culture-trigger) { justify-content: center; }
+}
+@media (max-height: 540px) and (min-width: 600px) {
+  .culture-dialog { width: min(640px, calc(100vw - 32px)); }
+  .culture-panel { padding-top: 1rem; }
+  .culture-eyebrow { display: none; }
+  .culture-dialog h2 { font-size: 1.6rem; }
+  .pong-scoreboard { margin: .45rem 0; }
+}
+@media (prefers-reduced-motion: reduce) { .culture-trigger { transition: none; } }
+@media print { .culture-trigger, .culture-dialog { display: none !important; } }

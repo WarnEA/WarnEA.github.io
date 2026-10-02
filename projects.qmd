@@ -1,0 +1,104 @@
+---
+title: "Research"
+toc: false
+page-layout: full
+anchor-sections: false
+---
+
+::: {.page-lead}
+Projects in microbial genetics, genomics and host–microbe interactions.
+:::
+
+::: {.timeline}
+
+::: {.timeline-item #phd}
+::: {.timeline-date}
+2026–present
+
+[Current Project]{.current-label}
+:::
+::: {.timeline-card}
+## PhD — Microbial Genetics {.timeline-title}
+
+**University of Liverpool**
+
+Plasmid manipulation of bacterial behaviour in *Pseudomonas aeruginosa*.
+
+<details class="project-details">
+<summary>Project details &amp; methods</summary>
+
+Investigating how antimicrobial-resistance plasmids alter bacterial behaviour and evolutionary dynamics, with a focus on plasmid–host interactions, social behaviour and adaptation.
+
+**Methods:** bacterial phenotyping · microbial genetics · experimental evolution · quantitative analysis
+
+</details>
+:::
+:::
+
+::: {.timeline-item}
+::: {.timeline-date}
+2025–2026
+:::
+::: {.timeline-card}
+## MRes — Gut Microbial Genomics {.timeline-title}
+
+**University of Liverpool**
+
+Comparative genomics of Clostridia in healthy and diarrhoeal gut microbiomes.
+
+<details class="project-details">
+<summary>Project details &amp; methods</summary>
+
+Investigated genomic and ecological differences in gut Clostridia, with particular focus on *Clostridium perfringens*, virulence-associated variation and strain diversity.
+
+**Methods:** shotgun metagenomics · MAG recovery · diversity analysis · ANI · phylogenomics · HPC
+
+</details>
+:::
+:::
+
+::: {.timeline-item}
+::: {.timeline-date}
+2024–2025
+:::
+::: {.timeline-card}
+## BSc - Plant-Microbe Interactions {.timeline-title}
+
+**University of Liverpool**
+
+Rhizobacteria, aphids and barley yellow dwarf virus.
+
+<details class="project-details">
+<summary>Project details &amp; methods</summary>
+
+Investigated whether rhizobacterial inoculation could alter barley responses to *Sitobion avenae* and aphid-vectored barley yellow dwarf virus.
+
+**Methods:** bacterial culture · plant/aphid experiments · DAS-ELISA · mixed-effects modelling
+
+</details>
+:::
+:::
+
+::: {.timeline-item}
+::: {.timeline-date}
+Summer 2024
+:::
+::: {.timeline-card}
+## UNIQ+ Research Internship - Photosynthesis Evolution {.timeline-title}
+
+**University of Oxford**
+
+Plasmodesmata distribution across the C3–C4 evolutionary gradient in *Flaveria*.
+
+<details class="project-details">
+<summary>Project details &amp; methods</summary>
+
+Investigated changes in mesophyll–bundle sheath connectivity during the evolution of C4 photosynthesis.
+
+**Methods:** FIB-SEM · confocal microscopy · image segmentation · 3D reconstruction
+
+</details>
+:::
+:::
+
+:::

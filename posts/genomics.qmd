@@ -1,0 +1,39 @@
+---
+title: "Why plasmids are more than resistance vectors"
+date: 2026-10-02
+date-format: "D MMMM YYYY"
+author: "Anthony Warnecke"
+description: "The questions behind my PhD: how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution."
+categories: [Plasmid biology, Bacterial evolution]
+body-classes: writing-article
+page-layout: article
+toc: false
+anchor-sections: false
+title-block-categories: false
+---
+
+[← All writing](../writing.qmd){.article-back-link}
+
+::: {.article-lead}
+Plasmids are mobile genetic elements that can move genetic information between bacterial cells. They are best known for carrying antimicrobial-resistance genes, but their effects on host cells can extend well beyond resistance.
+:::
+
+That wider relationship is the starting point for my PhD at the University of Liverpool. I study how antimicrobial-resistance plasmids influence bacterial behaviour and evolution, with a focus on plasmid–host interactions in *Pseudomonas aeruginosa*.
+
+## A gene is only part of the question
+
+When thinking about a resistance plasmid, it is natural to ask which resistance genes it carries. My research begins with a related question: **what changes when a bacterium acquires the plasmid?**
+
+That question shifts attention towards the host. What happens to its phenotype? Does its social behaviour change? How does the relationship between plasmid and bacterium develop as they evolve together? These are the questions I want to investigate, rather than treating resistance as the only feature that matters.
+
+## Looking at behaviour and evolution together
+
+My project brings together bacterial phenotyping, microbial genetics, experimental evolution and quantitative analysis. Each offers a different way to examine the relationship between a plasmid and its host.
+
+Phenotyping puts bacterial behaviour at the centre of the work. Experimental evolution adds the question of how that relationship changes over time. Together, these approaches frame the project around both the immediate effects of acquiring a plasmid and the longer-term dynamics of adaptation.
+
+The aim is to understand the connection between mobile DNA, the cells that carry it and the ways bacteria adapt. This note sets out the questions motivating that work; the research itself is ongoing.
+
+::: {.article-endnote}
+[More about my PhD research →](../projects.qmd#phd)
+:::

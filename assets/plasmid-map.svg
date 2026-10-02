@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="480" viewBox="0 0 560 480">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#718170" opacity=".2"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9Z" fill="#4e6653"/></marker>
+  </defs>
+  <rect width="560" height="480" fill="url(#grid)"/>
+  <g transform="translate(280 234)">
+    <circle r="170" fill="none" stroke="#899583" stroke-width="1" opacity=".24"/>
+    <circle r="144" fill="none" stroke="#899583" stroke-width="1" stroke-dasharray="2 6" opacity=".45"/>
+    <circle r="119" fill="none" stroke="#4e6653" stroke-width="2"/>
+    <circle r="107" fill="none" stroke="#4e6653" stroke-width="2" opacity=".4"/>
+    <path d="M-28-110A113 113 0 0 1 103-47" fill="none" stroke="#4e6653" stroke-width="17"/>
+    <path d="M110 25A113 113 0 0 1 29 109" fill="none" stroke="#b15d44" stroke-width="17"/>
+    <path d="M-49 102A113 113 0 0 1-113 0" fill="none" stroke="#b1b594" stroke-width="17"/>
+    <path d="M-79-81A113 113 0 0 1-49-102" fill="none" stroke="#777f66" stroke-width="17"/>
+    <path d="M-5-92A92 92 0 0 1 77-50" fill="none" stroke="#4e6653" stroke-width="1.4" marker-end="url(#arrow)"/>
+    <path d="M83 40A92 92 0 0 1 44 81" fill="none" stroke="#4e6653" stroke-width="1.4" marker-end="url(#arrow)"/>
+    <text text-anchor="middle" fill="#4e6653" font-family="Georgia,serif" font-size="27" y="0" font-style="italic">plasmid</text>
+    <text text-anchor="middle" fill="#6b7264" font-family="Helvetica,Arial,sans-serif" font-size="9" letter-spacing="2" y="23">MOBILE GENETIC ELEMENT</text>
+    <circle r="3" cy="43" fill="#b15d44"/>
+  </g>
+  <g fill="none" stroke="#899583" stroke-width="1">
+    <path d="M337 137L389 81H453"/><circle cx="337" cy="137" r="3" fill="#4e6653"/>
+    <path d="M367 307L421 353H478"/><circle cx="367" cy="307" r="3" fill="#b15d44"/>
+    <path d="M174 272L113 312H69"/><circle cx="174" cy="272" r="3" fill="#777f66"/>
+  </g>
+  <g font-family="Helvetica,Arial,sans-serif" font-size="10" letter-spacing="1.4" fill="#56624f">
+    <text x="389" y="69">GENETIC EXCHANGE</text><text x="410" y="373">ADAPTATION</text><text x="55" y="332">HOST INTERACTIONS</text>
+  </g>
+  <g stroke="#899583" stroke-width="1" opacity=".55"><path d="M24 36h16m-8-8v16M520 36h16m-8-8v16M24 444h16m-8-8v16M520 444h16m-8-8v16"/></g>
+  <text x="280" y="449" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" letter-spacing="2.2" fill="#6b7264">PLASMID—HOST INTERACTIONS</text>
+</svg>

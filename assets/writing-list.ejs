@@ -1,0 +1,15 @@
+```{=html}
+<div class="writing-list list">
+<% for (const item of items) { %>
+  <article class="writing-entry">
+    <h2 class="listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h2>
+    <div class="writing-entry-meta">
+      <% if (item.date) { %><time class="listing-date"><%= item.date %></time><% } %>
+      <% if (item.date && item['reading-time']) { %><span aria-hidden="true">·</span><% } %>
+      <% if (item['reading-time']) { %><span class="listing-reading-time"><%= item['reading-time'] %></span><% } %>
+    </div>
+    <% if (item.description) { %><p class="listing-description"><%= item.description %></p><% } %>
+  </article>
+<% } %>
+</div>
+```

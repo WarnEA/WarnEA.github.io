@@ -1,0 +1,105 @@
+---
+title: "Curriculum vitae"
+toc: false
+page-layout: full
+---
+
+```{=html}
+<div class="cv-toolbar">
+  <p>Anthony Warnecke · Microbial genetics · University of Liverpool</p>
+  <button class="button-link" type="button" onclick="window.print()">Print / save as PDF <span aria-hidden="true">↗</span></button>
+</div>
+```
+
+::: {.cv-grid}
+
+::: {.cv-left}
+
+## Education
+
+### PhD Biological Sciences (Evolution, Ecology & Behaviour)
+**University of Liverpool** · 2026–present
+
+Evolution, Ecology and Behaviour. MRC-funded research on plasmid-mediated changes to bacterial behaviour.
+
+### MRes Infection, Microbiology & Microbiomes
+**University of Liverpool** · 2025–2026
+
+Comparative metagenomics of gut Clostridia.
+
+### BSc (Hons) Microbiology
+**University of Liverpool** · 2022–2025
+
+**First Class Honours**
+
+## Technical skills
+
+**Microbiology**  
+Bacterial culture · aseptic technique · viable counts · antimicrobial assays · phage assays
+
+**Molecular biology**  
+DNA/RNA extraction · RT-qPCR · DAS-ELISA
+
+**Genomics**  
+Shotgun metagenomics · MAG recovery · comparative genomics · phylogenomics · ANI
+
+**Microscopy**  
+FIB-SEM · confocal microscopy · fluorescence microscopy · 3D reconstruction
+
+**Computing**  
+R · Python · Bash · Linux · HPC
+
+## Memberships
+
+**AMRSB** · Royal Society of Biology  
+**Member** · Microbiology Society  
+**Member (Mem.Res)** · Royal Entomological Society
+
+:::
+
+::: {.cv-right}
+
+## Research experience
+
+### PhD Student
+**University of Liverpool** · 2026–present
+
+Investigating how multidrug-resistance plasmids alter bacterial behaviour and evolutionary dynamics in *P. aeruginosa*.
+
+### MRes Research Project
+**University of Liverpool** · 2025–2026  
+**Supervisor:** Prof. Alistair Darby
+
+Genomic and ecological differences in gut Clostridia, with a focus on *Clostridium perfringens*.
+
+**Methods:** shotgun metagenomics · MAG recovery · diversity analysis · ANI · phylogenomics · HPC  
+**Software:** Kraken2 · Bracken · MetaWRAP · MEGAHIT · CheckM · FastANI · dRep · R · Bash
+
+### Undergraduate Dissertation
+**University of Liverpool** · 2024–2025  
+**Supervisor:** Dr Daniel Leybourne
+
+Rhizobacteria-mediated changes to barley responses to *Sitobion avenae* and barley yellow dwarf virus.
+
+**Methods:** bacterial culture · plant/aphid experiments · DAS-ELISA · mixed-effects modelling  
+**Output:** Royal Entomological Society Student Forum 2025
+
+### UNIQ+ Research Internship
+**University of Oxford — Langdale Lab** · Summer 2024  
+**Supervisor:** Dr Tina Schreier
+
+Plasmodesmata distribution across the C3–C4 evolutionary gradient in *Flaveria*.
+
+**Methods:** FIB-SEM · confocal microscopy · image segmentation · 3D reconstruction  
+**Software:** Fiji · ImageJ · Amira · R · Plotly  
+**Output:** Best Presentation Prize, Oxford Summer Research Symposium
+
+## Awards & funding
+
+**MRC-funded PhD Studentship** · University of Liverpool · 2026–  
+**UNIQ+ Research Internship** · University of Oxford · 2024  
+**Best Presentation Prize** · University of Oxford · 2024
+
+:::
+
+:::
