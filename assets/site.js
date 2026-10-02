@@ -236,8 +236,8 @@
           `${recipient} gains resistance and becomes a resistant zombie.`;
         status.textContent = `${winner} ${game.player.score}–${game.cpu.score}. ${result}`;
       }
-      else if (game.player.score || game.cpu.score) status.textContent = `You ${game.player.score}, lab bacterium ${game.cpu.score}. First to five.`;
-      else status.textContent = 'Keep the plasmid in play. First to five.';
+      else if (game.player.score || game.cpu.score) status.textContent = `You ${game.player.score}, lab bacterium ${game.cpu.score}. First to three.`;
+      else status.textContent = 'Keep the plasmid in play. First to three.';
     };
 
     const stopLoop = () => {
