@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Anthony Warnecke">
+<meta name="dcterms.date" content="2026-10-02">
+<meta name="description" content="What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.">
 
-<title>Writing – Anthony Warnecke</title>
+<title>Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes – Anthony Warnecke</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,25 +32,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./assets/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b015860c8b364e46083be0abd0510b64.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b015860c8b364e46083be0abd0510b64.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -63,77 +64,21 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-writing-notes .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-description','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-format","listing-engines","listing-language","listing-draft-mode","listing-title","listing-date","listing-date-format","listing-author","listing-description","listing-categories","listing-body-classes","listing-page-layout","listing-toc","listing-anchor-sections","listing-title-block-categories","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-writing-notes'] = new List('listing-writing-notes', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="writing.css">
-<link rel="stylesheet" href="assets/easter-egg.css">
-<meta property="og:title" content="Writing – Anthony Warnecke">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../writing.css">
+<link rel="stylesheet" href="../assets/easter-egg.css">
+<meta property="og:title" content="Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes – Anthony Warnecke">
+<meta property="og:description" content="What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.">
 <meta property="og:site_name" content="Anthony Warnecke">
-<meta name="twitter:title" content="Writing – Anthony Warnecke">
+<meta name="twitter:title" content="Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes – Anthony Warnecke">
+<meta name="twitter:description" content="What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed writing-index quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed writing-article fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -302,7 +247,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Anthony Warnecke</span>
     </a>
   </div>
@@ -312,23 +257,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../projects.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./writing.html" aria-current="page"> 
+    <a class="nav-link" href="../writing.html"> 
 <span class="menu-text">Writing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./CV.html"> 
+    <a class="nav-link" href="../CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -344,24 +289,41 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Writing</h1>
+<h1 class="title">Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes</h1>
+  </div>
+
+<div>
+  <div class="description">
+    What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.
+  </div>
 </div>
 
 
+<div class="quarto-title-meta">
 
-<div class="quarto-title-meta column-page">
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Warnecke </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2 October 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -371,38 +333,133 @@ window.Quarto = {
 </header>
 
 
-<div class="writing-heading">
-  <p>My ramblings on microbial genetics, genomics, and bacterial evolution.</p>
+<p><a href="../writing.html" class="article-back-link">← All writing</a></p>
+<div class="article-lead">
+<p>Chromosomes dominate how we think about inheritance, but some of the most evolutionarily flexible DNA exists outside them. A recent Perspective in <em>Nature Reviews Genetics</em> argues that bacterial plasmids and extrachromosomal DNA in cancer may represent strikingly similar solutions to the same evolutionary problem: how to adapt quickly when conditions change.<a href="#ref-1">1</a></p>
 </div>
-<div id="listing-writing-notes" class="quarto-listing quarto-listing-container-custom">
-<div class="writing-list list">
-
-  <article class="writing-entry">
-    <h2 class="listing-title"><a href="./posts/plasmids.html" class="no-external">Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes</a></h2>
-    <div class="writing-entry-meta">
-      <time class="listing-date">2 Oct 2026</time>
-      <span aria-hidden="true">·</span>
-      <span class="listing-reading-time">6 min</span>
-    </div>
-    <p class="listing-description">What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.</p>
-  </article>
-
-  <article class="writing-entry">
-    <h2 class="listing-title"><a href="./posts/genomics.html" class="no-external">Why plasmids are more than resistance vectors</a></h2>
-    <div class="writing-entry-meta">
-      <time class="listing-date">2 Oct 2026</time>
-      <span aria-hidden="true">·</span>
-      <span class="listing-reading-time">2 min</span>
-    </div>
-    <p class="listing-description">The questions behind my PhD: how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution.</p>
-  </article>
+<p>The comparison is surprising. Bacterial plasmids and cancer-associated extrachromosomal DNA, or <strong>ecDNA</strong>, exist in completely different organisms and operate within very different cellular systems.</p>
+<p>Yet both can replicate independently of chromosomes, exist at multiple copies within a cell and segregate imperfectly during cell division.<a href="#ref-1">1</a></p>
+<p>Those properties make extrachromosomal DNA more than an alternative place to store genes. They can fundamentally alter how quickly populations generate variation and respond to selection.</p>
+<section id="copy-number-changes-what-a-gene-can-do" class="level2">
+<h2 data-anchor-id="copy-number-changes-what-a-gene-can-do">Copy number changes what a gene can do</h2>
+<p>Moving a gene onto a multicopy element immediately changes its biological context.</p>
+<p>A chromosomal gene may exist once per genome. The same gene carried on a plasmid can exist at tens or even hundreds of copies per cell.</p>
+<p>For dose-dependent traits, that difference matters. Increasing the number of resistance-gene copies can increase the amount of resistance protein produced and therefore increase the level of resistance.</p>
+<p>But copy number also changes the evolutionary potential of the gene.</p>
+<p>More copies mean more DNA molecules on which mutations can occur. Experiments with multicopy plasmids have shown that this increased mutational supply can accelerate the evolution of antibiotic resistance.<a href="#ref-2">2</a></p>
+<p>Recent work has also shown that plasmid copy number follows broader relationships with plasmid size, suggesting that copy number itself is a fundamental feature of plasmid ecology and evolution rather than simply a laboratory parameter.<a href="#ref-3">3</a></p>
+</section>
+<section id="imperfect-inheritance-creates-variation" class="level2">
+<h2 data-anchor-id="imperfect-inheritance-creates-variation">Imperfect inheritance creates variation</h2>
+<p>Chromosomes are normally inherited with remarkable precision.</p>
+<p>High-copy plasmids are less predictable.</p>
+<p>When a bacterial cell divides, plasmid copies may not be distributed equally between its daughters. Over several generations, this creates a population containing cells with different plasmid copy numbers.</p>
+<p>This variation can directly produce variation in phenotype.</p>
+<p>Hernandez-Beltran and colleagues showed that variation in plasmid copy number can generate <strong>phenotypic noise in antibiotic resistance</strong>, creating transiently resistant cells within an otherwise genetically similar population.<a href="#ref-4">4</a></p>
+<p>That has an important evolutionary consequence.</p>
+<p>If the environment suddenly changes, some cells may already possess a plasmid copy number suited to the new conditions. Selection can therefore act immediately on variation that already exists within the population.</p>
+<p>The same principle appears in cancer.</p>
+<p>ecDNA lacks conventional chromosomal segregation machinery, meaning daughter cells can inherit different numbers of oncogene-carrying ecDNA molecules. This generates substantial variation within tumours and allows ecDNA abundance to respond rapidly to treatment.<a href="#ref-5">5</a></p>
+</section>
+<section id="evolution-does-not-always-have-to-wait-for-mutation" class="level2">
+<h2 data-anchor-id="evolution-does-not-always-have-to-wait-for-mutation">Evolution does not always have to wait for mutation</h2>
+<p>This is perhaps the most interesting part of the analogy.</p>
+<p>We often think about adaptation as:</p>
+<p><strong>mutation → selection → spread</strong></p>
+<p>Extrachromosomal DNA introduces another route:</p>
+<p><strong>copy-number variation → selection → rapid phenotypic change</strong></p>
+<p>A population can therefore alter the dosage of an existing gene without waiting for a new mutation to arise.</p>
+<p>If selection changes again, the distribution of copy numbers can shift back.</p>
+<p>The paper describes plasmids and ecDNA as potential <strong>contingency loci</strong>: unusually evolvable portions of the genome capable of generating phenotypic diversity when conditions change.<a href="#ref-1">1</a></p>
+<p>This idea is particularly interesting for antimicrobial resistance. Antibiotic exposure is rarely constant. Bacteria experience pulses of selection as antibiotic concentrations rise and fall between environments, tissues and treatments.</p>
+<p>A genetic system capable of rapidly generating both high- and low-copy subpopulations could provide considerable flexibility under those conditions.</p>
+</section>
+<section id="extrachromosomal-dna-can-reshape-the-rest-of-the-cell" class="level2">
+<h2 data-anchor-id="extrachromosomal-dna-can-reshape-the-rest-of-the-cell">Extrachromosomal DNA can reshape the rest of the cell</h2>
+<p>Copy number is only part of the story.</p>
+<p>Plasmids can also alter bacterial phenotype by changing the expression of chromosomal genes.</p>
+<p>Multidrug-resistance plasmids have been shown to reprogramme host transcription, including metabolic pathways that have no obvious direct relationship to the resistance genes carried by the plasmid.<a href="#ref-6">6</a></p>
+<p>This raises a broader evolutionary question: why would a plasmid alter host behaviour?</p>
+<p>One possibility is that some plasmid-induced phenotypes improve the persistence or transmission of the plasmid itself. This has led to the suggestion that plasmids can effectively <strong>manipulate bacterial phenotype</strong>, rather than functioning simply as passive vehicles for accessory genes.<a href="#ref-7">7</a></p>
+<p>ecDNA provides an interesting parallel.</p>
+<p>In cancer cells, different ecDNA molecules can physically associate into regulatory hubs, allowing enhancers and oncogenes carried on separate molecules to interact.<a href="#ref-8">8</a></p>
+<p>Again, DNA outside the chromosome becomes part of the regulatory architecture of the cell.</p>
+</section>
+<section id="plasmids-and-ecdna-are-not-the-same-thing" class="level2">
+<h2 data-anchor-id="plasmids-and-ecdna-are-not-the-same-thing">Plasmids and ecDNA are not the same thing</h2>
+<p>The analogy has limits.</p>
+<p>Plasmids can move horizontally between bacterial cells and even between species. Their evolutionary interests can therefore become partly independent of the bacterium currently carrying them.</p>
+<p>Cancer ecDNA generally remains within a tumour lineage.</p>
+<p>Plasmids can also acquire genes from many evolutionary sources, whereas ecDNA originates from chromosomal DNA within the host cell.</p>
+<p>The molecular mechanisms involved in replication and segregation are also very different.</p>
+<p>The interesting similarity is therefore at the level of <strong>evolutionary function</strong>.</p>
+<p>Despite their independent origins, both systems allow important genes to exist on autonomously replicating, variably inherited DNA molecules.<a href="#ref-1">1</a></p>
+</section>
+<section id="a-different-way-to-think-about-plasmids" class="level2">
+<h2 data-anchor-id="a-different-way-to-think-about-plasmids">A different way to think about plasmids</h2>
+<p>Plasmid biology is often framed around horizontal gene transfer.</p>
+<p>That makes sense, particularly when thinking about antimicrobial resistance.</p>
+<p>But the comparison with ecDNA highlights another dimension of plasmid evolution: <strong>what happens after the plasmid arrives inside the cell?</strong></p>
+<p>Its copy number can change.</p>
+<p>Its genes can mutate.</p>
+<p>Its structure can rearrange.</p>
+<p>Its inheritance can generate cell-to-cell variation.</p>
+<p>And its presence can alter the expression and behaviour of the bacterial host.</p>
+<p>For me, this connects directly with the questions behind my PhD.</p>
+<p>If an antimicrobial-resistance plasmid changes bacterial behaviour, is that simply a physiological side effect of carrying additional DNA?</p>
+<p>Is the bacterium adapting to the plasmid?</p>
+<p>Or has selection shaped plasmids to modify their hosts in ways that improve plasmid persistence and transmission?</p>
+<p>Thinking about plasmids as independent evolutionary entities makes those questions much more interesting.</p>
+<div class="article-endnote">
+<p><a href="../research/phd.qmd">More about my PhD research →</a></p>
+</div>
+<hr>
+</section>
+<section id="references" class="level2">
+<h2 data-anchor-id="references">References</h2>
+<div id="ref-1">
 
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
+<p><strong>1.</strong> Shaw, L. P. &amp; Henssen, A. G. The shared evolutionary capacities of plasmids and extrachromosomal DNA. <em>Nature Reviews Genetics</em> (2026).<br>
+<a href="https://doi.org/10.1038/s41576-026-01012-7">DOI: 10.1038/s41576-026-01012-7</a></p>
+<div id="ref-2">
+
 </div>
+<p><strong>2.</strong> San Millan, A., Escudero, J. A., Gifford, D. R., Mazel, D. &amp; MacLean, R. C. Multicopy plasmids potentiate the evolution of antibiotic resistance in bacteria. <em>Nature Ecology &amp; Evolution</em> <strong>1</strong>, 10 (2016).<br>
+<a href="https://doi.org/10.1038/s41559-016-0010">DOI: 10.1038/s41559-016-0010</a></p>
+<div id="ref-3">
+
+</div>
+<p><strong>3.</strong> Ramiro-Martínez, P. <em>et al.</em> Universal rules govern plasmid copy number. <em>Nature Communications</em> <strong>16</strong>, 6022 (2025).<br>
+<a href="https://doi.org/10.1038/s41467-025-61202-5">DOI: 10.1038/s41467-025-61202-5</a></p>
+<div id="ref-4">
+
+</div>
+<p><strong>4.</strong> Hernandez-Beltran, J. C. R. <em>et al.</em> Plasmid-mediated phenotypic noise leads to transient antibiotic resistance in bacteria. <em>Nature Communications</em> <strong>15</strong>, 2610 (2024).<br>
+<a href="https://doi.org/10.1038/s41467-024-45045-0">DOI: 10.1038/s41467-024-45045-0</a></p>
+<div id="ref-5">
+
+</div>
+<p><strong>5.</strong> Lange, J. T. <em>et al.</em> The evolutionary dynamics of extrachromosomal DNA in human cancers. <em>Nature Genetics</em> <strong>54</strong>, 1527–1533 (2022).<br>
+<a href="https://doi.org/10.1038/s41588-022-01177-x">DOI: 10.1038/s41588-022-01177-x</a></p>
+<div id="ref-6">
+
+</div>
+<p><strong>6.</strong> Hall, R. J., Snaith, A. E., Thomas, M. J. N., Brockhurst, M. A. &amp; McNally, A. Multidrug resistance plasmids commonly reprogram the expression of metabolic genes in <em>Escherichia coli</em>. <em>mSystems</em> <strong>9</strong>, e01193-23 (2024).<br>
+<a href="https://doi.org/10.1128/msystems.01193-23">DOI: 10.1128/msystems.01193-23</a></p>
+<div id="ref-7">
+
+</div>
+<p><strong>7.</strong> Billane, K., Harrison, E., Cameron, D. &amp; Brockhurst, M. A. Why do plasmids manipulate the expression of bacterial phenotypes? <em>Philosophical Transactions of the Royal Society B</em> <strong>377</strong>, 20200461 (2022).<br>
+<a href="https://doi.org/10.1098/rstb.2020.0461">DOI: 10.1098/rstb.2020.0461</a></p>
+<div id="ref-8">
+
+</div>
+<p><strong>8.</strong> Hung, K. L. <em>et al.</em> ecDNA hubs drive cooperative intermolecular oncogene expression. <em>Nature</em> <strong>600</strong>, 731–736 (2021).<br>
+<a href="https://doi.org/10.1038/s41586-021-04116-8">DOI: 10.1038/s41586-021-04116-8</a></p>
 
 
-
+</section>
 
 </main> <!-- /main -->
 <div class="site-extras" hidden="">
@@ -880,5 +937,5 @@ window.Quarto = {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

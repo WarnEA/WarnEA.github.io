@@ -98,6 +98,62 @@
     "text": "UNIQ+ Research Internship - Photosynthesis Evolution\nUniversity of Oxford\nPlasmodesmata distribution across the C3–C4 evolutionary gradient in Flaveria.\n\n\nProject details & methods\n\nInvestigated changes in mesophyll–bundle sheath connectivity during the evolution of C4 photosynthesis.\nMethods: FIB-SEM · confocal microscopy · image segmentation · 3D reconstruction"
   },
   {
+    "objectID": "posts/plasmids.html",
+    "href": "posts/plasmids.html",
+    "title": "Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes",
+    "section": "",
+    "text": "← All writing\nThe comparison is surprising. Bacterial plasmids and cancer-associated extrachromosomal DNA, or ecDNA, exist in completely different organisms and operate within very different cellular systems.\nYet both can replicate independently of chromosomes, exist at multiple copies within a cell and segregate imperfectly during cell division.1\nThose properties make extrachromosomal DNA more than an alternative place to store genes. They can fundamentally alter how quickly populations generate variation and respond to selection."
+  },
+  {
+    "objectID": "posts/plasmids.html#copy-number-changes-what-a-gene-can-do",
+    "href": "posts/plasmids.html#copy-number-changes-what-a-gene-can-do",
+    "title": "Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes",
+    "section": "Copy number changes what a gene can do",
+    "text": "Copy number changes what a gene can do\nMoving a gene onto a multicopy element immediately changes its biological context.\nA chromosomal gene may exist once per genome. The same gene carried on a plasmid can exist at tens or even hundreds of copies per cell.\nFor dose-dependent traits, that difference matters. Increasing the number of resistance-gene copies can increase the amount of resistance protein produced and therefore increase the level of resistance.\nBut copy number also changes the evolutionary potential of the gene.\nMore copies mean more DNA molecules on which mutations can occur. Experiments with multicopy plasmids have shown that this increased mutational supply can accelerate the evolution of antibiotic resistance.2\nRecent work has also shown that plasmid copy number follows broader relationships with plasmid size, suggesting that copy number itself is a fundamental feature of plasmid ecology and evolution rather than simply a laboratory parameter.3"
+  },
+  {
+    "objectID": "posts/plasmids.html#imperfect-inheritance-creates-variation",
+    "href": "posts/plasmids.html#imperfect-inheritance-creates-variation",
+    "title": "Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes",
+    "section": "Imperfect inheritance creates variation",
+    "text": "Imperfect inheritance creates variation\nChromosomes are normally inherited with remarkable precision.\nHigh-copy plasmids are less predictable.\nWhen a bacterial cell divides, plasmid copies may not be distributed equally between its daughters. Over several generations, this creates a population containing cells with different plasmid copy numbers.\nThis variation can directly produce variation in phenotype.\nHernandez-Beltran and colleagues showed that variation in plasmid copy number can generate phenotypic noise in antibiotic resistance, creating transiently resistant cells within an otherwise genetically similar population.4\nThat has an important evolutionary consequence.\nIf the environment suddenly changes, some cells may already possess a plasmid copy number suited to the new conditions. Selection can therefore act immediately on variation that already exists within the population.\nThe same principle appears in cancer.\necDNA lacks conventional chromosomal segregation machinery, meaning daughter cells can inherit different numbers of oncogene-carrying ecDNA molecules. This generates substantial variation within tumours and allows ecDNA abundance to respond rapidly to treatment.5"
+  },
+  {
+    "objectID": "posts/plasmids.html#evolution-does-not-always-have-to-wait-for-mutation",
+    "href": "posts/plasmids.html#evolution-does-not-always-have-to-wait-for-mutation",
+    "title": "Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes",
+    "section": "Evolution does not always have to wait for mutation",
+    "text": "Evolution does not always have to wait for mutation\nThis is perhaps the most interesting part of the analogy.\nWe often think about adaptation as:\nmutation → selection → spread\nExtrachromosomal DNA introduces another route:\ncopy-number variation → selection → rapid phenotypic change\nA population can therefore alter the dosage of an existing gene without waiting for a new mutation to arise.\nIf selection changes again, the distribution of copy numbers can shift back.\nThe paper describes plasmids and ecDNA as potential contingency loci: unusually evolvable portions of the genome capable of generating phenotypic diversity when conditions change.1\nThis idea is particularly interesting for antimicrobial resistance. Antibiotic exposure is rarely constant. Bacteria experience pulses of selection as antibiotic concentrations rise and fall between environments, tissues and treatments.\nA genetic system capable of rapidly generating both high- and low-copy subpopulations could provide considerable flexibility under those conditions."
+  },
+  {
+    "objectID": "posts/plasmids.html#extrachromosomal-dna-can-reshape-the-rest-of-the-cell",
+    "href": "posts/plasmids.html#extrachromosomal-dna-can-reshape-the-rest-of-the-cell",
+    "title": "Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes",
+    "section": "Extrachromosomal DNA can reshape the rest of the cell",
+    "text": "Extrachromosomal DNA can reshape the rest of the cell\nCopy number is only part of the story.\nPlasmids can also alter bacterial phenotype by changing the expression of chromosomal genes.\nMultidrug-resistance plasmids have been shown to reprogramme host transcription, including metabolic pathways that have no obvious direct relationship to the resistance genes carried by the plasmid.6\nThis raises a broader evolutionary question: why would a plasmid alter host behaviour?\nOne possibility is that some plasmid-induced phenotypes improve the persistence or transmission of the plasmid itself. This has led to the suggestion that plasmids can effectively manipulate bacterial phenotype, rather than functioning simply as passive vehicles for accessory genes.7\necDNA provides an interesting parallel.\nIn cancer cells, different ecDNA molecules can physically associate into regulatory hubs, allowing enhancers and oncogenes carried on separate molecules to interact.8\nAgain, DNA outside the chromosome becomes part of the regulatory architecture of the cell."
+  },
+  {
+    "objectID": "posts/plasmids.html#plasmids-and-ecdna-are-not-the-same-thing",
+    "href": "posts/plasmids.html#plasmids-and-ecdna-are-not-the-same-thing",
+    "title": "Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes",
+    "section": "Plasmids and ecDNA are not the same thing",
+    "text": "Plasmids and ecDNA are not the same thing\nThe analogy has limits.\nPlasmids can move horizontally between bacterial cells and even between species. Their evolutionary interests can therefore become partly independent of the bacterium currently carrying them.\nCancer ecDNA generally remains within a tumour lineage.\nPlasmids can also acquire genes from many evolutionary sources, whereas ecDNA originates from chromosomal DNA within the host cell.\nThe molecular mechanisms involved in replication and segregation are also very different.\nThe interesting similarity is therefore at the level of evolutionary function.\nDespite their independent origins, both systems allow important genes to exist on autonomously replicating, variably inherited DNA molecules.1"
+  },
+  {
+    "objectID": "posts/plasmids.html#a-different-way-to-think-about-plasmids",
+    "href": "posts/plasmids.html#a-different-way-to-think-about-plasmids",
+    "title": "Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes",
+    "section": "A different way to think about plasmids",
+    "text": "A different way to think about plasmids\nPlasmid biology is often framed around horizontal gene transfer.\nThat makes sense, particularly when thinking about antimicrobial resistance.\nBut the comparison with ecDNA highlights another dimension of plasmid evolution: what happens after the plasmid arrives inside the cell?\nIts copy number can change.\nIts genes can mutate.\nIts structure can rearrange.\nIts inheritance can generate cell-to-cell variation.\nAnd its presence can alter the expression and behaviour of the bacterial host.\nFor me, this connects directly with the questions behind my PhD.\nIf an antimicrobial-resistance plasmid changes bacterial behaviour, is that simply a physiological side effect of carrying additional DNA?\nIs the bacterium adapting to the plasmid?\nOr has selection shaped plasmids to modify their hosts in ways that improve plasmid persistence and transmission?\nThinking about plasmids as independent evolutionary entities makes those questions much more interesting.\n\nMore about my PhD research →"
+  },
+  {
+    "objectID": "posts/plasmids.html#references",
+    "href": "posts/plasmids.html#references",
+    "title": "Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes",
+    "section": "References",
+    "text": "References\n\n\n\n1. Shaw, L. P. & Henssen, A. G. The shared evolutionary capacities of plasmids and extrachromosomal DNA. Nature Reviews Genetics (2026).\nDOI: 10.1038/s41576-026-01012-7\n\n\n\n2. San Millan, A., Escudero, J. A., Gifford, D. R., Mazel, D. & MacLean, R. C. Multicopy plasmids potentiate the evolution of antibiotic resistance in bacteria. Nature Ecology & Evolution 1, 10 (2016).\nDOI: 10.1038/s41559-016-0010\n\n\n\n3. Ramiro-Martínez, P. et al. Universal rules govern plasmid copy number. Nature Communications 16, 6022 (2025).\nDOI: 10.1038/s41467-025-61202-5\n\n\n\n4. Hernandez-Beltran, J. C. R. et al. Plasmid-mediated phenotypic noise leads to transient antibiotic resistance in bacteria. Nature Communications 15, 2610 (2024).\nDOI: 10.1038/s41467-024-45045-0\n\n\n\n5. Lange, J. T. et al. The evolutionary dynamics of extrachromosomal DNA in human cancers. Nature Genetics 54, 1527–1533 (2022).\nDOI: 10.1038/s41588-022-01177-x\n\n\n\n6. Hall, R. J., Snaith, A. E., Thomas, M. J. N., Brockhurst, M. A. & McNally, A. Multidrug resistance plasmids commonly reprogram the expression of metabolic genes in Escherichia coli. mSystems 9, e01193-23 (2024).\nDOI: 10.1128/msystems.01193-23\n\n\n\n7. Billane, K., Harrison, E., Cameron, D. & Brockhurst, M. A. Why do plasmids manipulate the expression of bacterial phenotypes? Philosophical Transactions of the Royal Society B 377, 20200461 (2022).\nDOI: 10.1098/rstb.2020.0461\n\n\n\n8. Hung, K. L. et al. ecDNA hubs drive cooperative intermolecular oncogene expression. Nature 600, 731–736 (2021).\nDOI: 10.1038/s41586-021-04116-8"
+  },
+  {
     "objectID": "posts/genomics.html",
     "href": "posts/genomics.html",
     "title": "Why plasmids are more than resistance vectors",
@@ -130,6 +186,6 @@
     "href": "writing.html",
     "title": "Writing",
     "section": "",
-    "text": "Notes on microbial genetics, genomics and bacterial evolution.\n\n\n\n\n  \n    Why plasmids are more than resistance vectors\n    \n      2 Oct 2026\n      ·\n      2 min\n    \n    The questions behind my PhD: how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution.\n  \n\n\nNo matching items"
+    "text": "My ramblings on microbial genetics, genomics, and bacterial evolution.\n\n\n\n\n  \n    Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes\n    \n      2 Oct 2026\n      ·\n      6 min\n    \n    What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.\n  \n\n  \n    Why plasmids are more than resistance vectors\n    \n      2 Oct 2026\n      ·\n      2 min\n    \n    The questions behind my PhD: how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution.\n  \n\n\nNo matching items"
   }
 ]

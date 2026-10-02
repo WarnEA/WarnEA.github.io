@@ -1,5 +1,6 @@
 ---
 pagetitle: "Anthony Warnecke — microbial genetics"
+description-meta: "Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution."
 page-layout: full
 toc: false
 anchor-sections: false

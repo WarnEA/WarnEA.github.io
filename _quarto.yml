@@ -7,8 +7,11 @@ project:
 
 website:
   title: "Anthony Warnecke"
+  site-url: https://warnea.github.io
   search: false
   description: "Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution."
+  open-graph: true
+  twitter-card: true
   favicon: assets/favicon.svg
   navbar:
     title: "Anthony Warnecke"
