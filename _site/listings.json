@@ -2,8 +2,15 @@
   {
     "listing": "/writing.html",
     "items": [
-      "/posts/plasmids.html",
-      "/posts/genomics.html"
+      "/posts/genomics.html",
+      "/posts/plasmids.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/genomics.html",
+      "/posts/plasmids.html"
     ]
   }
 ]

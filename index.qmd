@@ -1,15 +1,65 @@
 ---
-pagetitle: "Anthony Warnecke — microbial genetics"
+pagetitle: "Plasmid biology, University of Liverpool"
 description-meta: "Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution."
+open-graph:
+  description: "Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution."
+twitter-card:
+  description: "Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution."
 page-layout: full
 toc: false
 anchor-sections: false
+listing:
+  id: home-latest
+  contents: posts
+  sort: "date desc"
+  type: custom
+  template: assets/home-latest.ejs
+  max-items: 1
+  fields: [title, date]
+  date-format: "D MMM YYYY"
+  sort-ui: false
+  filter-ui: false
+  categories: false
 ---
 
 ```{=html}
 <section class="home-hero" aria-labelledby="home-heading">
-  <p class="home-role">PhD Student · University of Liverpool</p>
-  <h1 id="home-heading">Anthony Warnecke</h1>
-  <p class="home-intro">I study how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution.</p>
+  <div class="home-copy">
+    <p class="home-role">PhD student · University of Liverpool</p>
+    <h1 id="home-heading">Anthony Warnecke</h1>
+    <p class="home-intro">I study how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution.</p>
+```
+
+::: {#home-latest}
+:::
+
+```{=html}
+    <p class="home-elsewhere">
+      <a href="https://bsky.app/profile/warneckeanthony.bsky.social">Bluesky</a>
+      <a href="https://www.linkedin.com/in/anthony-warnecke-5330b6234/">LinkedIn</a>
+      <a href="https://orcid.org/0009-0006-2866-6623">ORCID</a>
+      <a href="https://github.com/WarnEA">GitHub</a>
+    </p>
+  </div>
+  <figure class="home-map" data-pmap="full">
+    <figcaption>This site as a plasmid map. Each section is a feature on pAW26.</figcaption>
+  </figure>
 </section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Anthony Warnecke",
+  "url": "https://warnea.github.io/",
+  "jobTitle": "PhD student",
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Liverpool" },
+  "knowsAbout": ["Plasmid biology", "Microbial genetics", "Antimicrobial resistance", "Bacterial evolution"],
+  "sameAs": [
+    "https://bsky.app/profile/warneckeanthony.bsky.social",
+    "https://www.linkedin.com/in/anthony-warnecke-5330b6234/",
+    "https://orcid.org/0009-0006-2866-6623",
+    "https://github.com/WarnEA"
+  ]
+}
+</script>
 ```

@@ -1,0 +1,28 @@
+---
+pagetitle: "Not on the map"
+description-meta: "This page is not part of Anthony Warnecke's website."
+open-graph:
+  description: "This page is not part of Anthony Warnecke's website."
+twitter-card:
+  description: "This page is not part of Anthony Warnecke's website."
+page-layout: full
+toc: false
+anchor-sections: false
+---
+
+```{=html}
+<section class="home-hero is-deletion" aria-labelledby="missing-heading">
+  <div class="home-copy">
+    <p class="home-role">Error 404</p>
+    <h1 id="missing-heading">Deletion.</h1>
+    <p class="home-intro">This region isn't on the map. The page may have moved, or the address may have a typo.</p>
+    <ul class="home-next">
+      <li><a class="home-link" href="/index.html"><span class="home-link-kind">Back to the origin</span><span class="home-link-title">Home</span></a></li>
+      <li><a class="home-link" href="/writing.html"><span class="home-link-kind">Read instead</span><span class="home-link-title">Writing</span></a></li>
+    </ul>
+  </div>
+  <figure class="home-map" data-pmap="deletion">
+    <figcaption>The site's plasmid map with one feature deleted.</figcaption>
+  </figure>
+</section>
+```

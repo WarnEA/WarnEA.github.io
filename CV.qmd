@@ -1,6 +1,12 @@
 ---
+description-meta: "Curriculum vitae of Anthony Warnecke: education, research experience, technical skills, memberships and awards."
+open-graph:
+  description: "Curriculum vitae of Anthony Warnecke: education, research experience, technical skills, memberships and awards."
+twitter-card:
+  description: "Curriculum vitae of Anthony Warnecke: education, research experience, technical skills, memberships and awards."
 title: "Curriculum vitae"
 toc: false
+anchor-sections: false
 page-layout: full
 ---
 
@@ -85,7 +91,7 @@ Rhizobacteria-mediated changes to barley responses to *Sitobion avenae* and barl
 **Output:** Royal Entomological Society Student Forum 2025
 
 ### UNIQ+ Research Internship
-**University of Oxford — Langdale Lab** · Summer 2024  
+**University of Oxford, Langdale Lab** · Summer 2024  
 **Supervisor:** Dr Tina Schreier
 
 Plasmodesmata distribution across the C3–C4 evolutionary gradient in *Flaveria*.

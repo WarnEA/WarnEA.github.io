@@ -65,6 +65,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -72,13 +74,16 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../assets/easter-egg.css">
 <meta property="og:title" content="Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes – Anthony Warnecke">
 <meta property="og:description" content="What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.">
+<meta property="og:image" content="https://warnea.github.io/posts/assets/og.png">
 <meta property="og:site_name" content="Anthony Warnecke">
 <meta name="twitter:title" content="Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes – Anthony Warnecke">
 <meta name="twitter:description" content="What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://warnea.github.io/posts/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://warnea.github.io/posts/plasmids.html">
 </head>
 
-<body class="nav-fixed writing-article fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed writing-article quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -221,7 +226,8 @@ ul.task-list li input[type="checkbox"] {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -234,6 +240,14 @@ ul.task-list li input[type="checkbox"] {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -277,24 +291,24 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools tools-wide">
+              <div class="quarto-navbar-tools tools-wide">
     <a href="https://bsky.app/profile/warneckeanthony.bsky.social" title="Bluesky" class="quarto-navigation-tool px-1" aria-label="Bluesky"><i class="bi bi-bluesky"></i></a>
     <a href="https://www.linkedin.com/in/anthony-warnecke-5330b6234/" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
     <a href="https://orcid.org/0009-0006-2866-6623" title="ORCID" class="quarto-navigation-tool px-1" aria-label="ORCID"><i class="bi bi-orcid"></i></a>
     <a href="https://github.com/WarnEA" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -309,7 +323,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -411,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Or has selection shaped plasmids to modify their hosts in ways that improve plasmid persistence and transmission?</p>
 <p>Thinking about plasmids as independent evolutionary entities makes those questions much more interesting.</p>
 <div class="article-endnote">
-<p><a href="../research/phd.qmd">More about my PhD research →</a></p>
+<p><a href="../projects.html#phd">More about my PhD research →</a></p>
 </div>
 <hr>
 </section>
@@ -489,7 +503,7 @@ ul.task-list li input[type="checkbox"] {
       <button class="pong-toggle" id="pong-toggle" type="button" autofocus="">Start game</button>
       <button class="pong-reset" id="pong-reset" type="button">Restart</button>
     </div>
-    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus — and make a zombie.</p>
+    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus and make a zombie.</p>
   </div>
 </dialog>
 <script>
@@ -499,6 +513,12 @@ ul.task-list li input[type="checkbox"] {
     const offset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
     const assetsBase = stylesheet ? new URL('./', stylesheet.href) : new URL(offset + 'assets/', document.baseURI);
     const assetVersion = 'pong-three-close-transfer';
+    const map = document.createElement('script');
+    map.src = new URL('plasmid-map.js?v=paw26-2', assetsBase).href;
+    document.head.appendChild(map);
+    const skip = Object.assign(document.createElement('a'), { className: 'skip-link', href: '#quarto-document-content', textContent: 'Skip to content' });
+    document.body.prepend(skip);
+    document.querySelectorAll('.quarto-color-scheme-toggle').forEach((toggle) => toggle.setAttribute('aria-label', 'Toggle dark mode'));
     const engine = document.createElement('script');
     const engineUrl = new URL('pong-engine.js', assetsBase);
     engineUrl.searchParams.set('v', assetVersion);

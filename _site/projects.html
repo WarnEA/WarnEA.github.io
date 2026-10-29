@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Research projects by Anthony Warnecke, from plasmid manipulation of Pseudomonas aeruginosa to gut Clostridia genomics and C4 photosynthesis.">
 
 <title>Research – Anthony Warnecke</title>
 <style>
@@ -62,15 +63,26 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<link rel="icon" href="./favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="writing.css">
 <link rel="stylesheet" href="assets/easter-egg.css">
 <meta property="og:title" content="Research – Anthony Warnecke">
+<meta property="og:description" content="Research projects by Anthony Warnecke, from plasmid manipulation of Pseudomonas aeruginosa to gut Clostridia genomics and C4 photosynthesis.">
+<meta property="og:image" content="https://warnea.github.io/assets/og.png">
 <meta property="og:site_name" content="Anthony Warnecke">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="Research – Anthony Warnecke">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Research projects by Anthony Warnecke, from plasmid manipulation of Pseudomonas aeruginosa to gut Clostridia genomics and C4 photosynthesis.">
+<meta name="twitter:image" content="https://warnea.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<link rel="canonical" href="https://warnea.github.io/projects.html">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -216,7 +228,8 @@ ul.task-list li input[type="checkbox"] {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -229,6 +242,14 @@ ul.task-list li input[type="checkbox"] {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -272,14 +293,14 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools tools-wide">
+              <div class="quarto-navbar-tools tools-wide">
     <a href="https://bsky.app/profile/warneckeanthony.bsky.social" title="Bluesky" class="quarto-navigation-tool px-1" aria-label="Bluesky"><i class="bi bi-bluesky"></i></a>
     <a href="https://www.linkedin.com/in/anthony-warnecke-5330b6234/" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
     <a href="https://orcid.org/0009-0006-2866-6623" title="ORCID" class="quarto-navigation-tool px-1" aria-label="ORCID"><i class="bi bi-orcid"></i></a>
     <a href="https://github.com/WarnEA" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -321,7 +342,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="current-label">Current Project</span></p>
 </div>
 <section id="phd-microbial-genetics" class="level2 timeline-title timeline-card">
-<h2 class="timeline-title" data-anchor-id="phd-microbial-genetics">PhD — Microbial Genetics</h2>
+<h2 class="timeline-title" data-anchor-id="phd-microbial-genetics">PhD · Microbial genetics</h2>
 <p><strong>University of Liverpool</strong></p>
 <p>Plasmid manipulation of bacterial behaviour in <em>Pseudomonas aeruginosa</em>.</p>
 <details class="project-details">
@@ -338,7 +359,7 @@ Project details &amp; methods
 <p>2025–2026</p>
 </div>
 <section id="mres-gut-microbial-genomics" class="level2 timeline-title timeline-card">
-<h2 class="timeline-title" data-anchor-id="mres-gut-microbial-genomics">MRes — Gut Microbial Genomics</h2>
+<h2 class="timeline-title" data-anchor-id="mres-gut-microbial-genomics">MRes · Gut microbial genomics</h2>
 <p><strong>University of Liverpool</strong></p>
 <p>Comparative genomics of Clostridia in healthy and diarrhoeal gut microbiomes.</p>
 <details class="project-details">
@@ -354,8 +375,8 @@ Project details &amp; methods
 <div class="timeline-date">
 <p>2024–2025</p>
 </div>
-<section id="bsc---plant-microbe-interactions" class="level2 timeline-title timeline-card">
-<h2 class="timeline-title" data-anchor-id="bsc---plant-microbe-interactions">BSc - Plant-Microbe Interactions</h2>
+<section id="bsc-plant-microbe-interactions" class="level2 timeline-title timeline-card">
+<h2 class="timeline-title" data-anchor-id="bsc-plant-microbe-interactions">BSc · Plant-microbe interactions</h2>
 <p><strong>University of Liverpool</strong></p>
 <p>Rhizobacteria, aphids and barley yellow dwarf virus.</p>
 <details class="project-details">
@@ -371,8 +392,8 @@ Project details &amp; methods
 <div class="timeline-date">
 <p>Summer 2024</p>
 </div>
-<section id="uniq-research-internship---photosynthesis-evolution" class="level2 timeline-title timeline-card">
-<h2 class="timeline-title" data-anchor-id="uniq-research-internship---photosynthesis-evolution">UNIQ+ Research Internship - Photosynthesis Evolution</h2>
+<section id="uniq-research-internship-photosynthesis-evolution" class="level2 timeline-title timeline-card">
+<h2 class="timeline-title" data-anchor-id="uniq-research-internship-photosynthesis-evolution">UNIQ+ research internship · Photosynthesis evolution</h2>
 <p><strong>University of Oxford</strong></p>
 <p>Plasmodesmata distribution across the C3–C4 evolutionary gradient in <em>Flaveria</em>.</p>
 <details class="project-details">
@@ -416,7 +437,7 @@ Project details &amp; methods
       <button class="pong-toggle" id="pong-toggle" type="button" autofocus="">Start game</button>
       <button class="pong-reset" id="pong-reset" type="button">Restart</button>
     </div>
-    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus — and make a zombie.</p>
+    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus and make a zombie.</p>
   </div>
 </dialog>
 <script>
@@ -426,6 +447,12 @@ Project details &amp; methods
     const offset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
     const assetsBase = stylesheet ? new URL('./', stylesheet.href) : new URL(offset + 'assets/', document.baseURI);
     const assetVersion = 'pong-three-close-transfer';
+    const map = document.createElement('script');
+    map.src = new URL('plasmid-map.js?v=paw26-2', assetsBase).href;
+    document.head.appendChild(map);
+    const skip = Object.assign(document.createElement('a'), { className: 'skip-link', href: '#quarto-document-content', textContent: 'Skip to content' });
+    document.body.prepend(skip);
+    document.querySelectorAll('.quarto-color-scheme-toggle').forEach((toggle) => toggle.setAttribute('aria-label', 'Toggle dark mode'));
     const engine = document.createElement('script');
     const engineUrl = new URL('pong-engine.js', assetsBase);
     engineUrl.searchParams.set('v', assetVersion);

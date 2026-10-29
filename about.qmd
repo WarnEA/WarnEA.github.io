@@ -1,6 +1,13 @@
 ---
+description-meta: "About Anthony Warnecke: PhD student in plasmid biology at the University of Liverpool, with a background in microbiology and genomics."
+open-graph:
+  description: "About Anthony Warnecke: PhD student in plasmid biology at the University of Liverpool, with a background in microbiology and genomics."
+twitter-card:
+  description: "About Anthony Warnecke: PhD student in plasmid biology at the University of Liverpool, with a background in microbiology and genomics."
 title: "About me"
 toc: false
+anchor-sections: false
+page-layout: full
 ---
 
 ::: {.page-lead}

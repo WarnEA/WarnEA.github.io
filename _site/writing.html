@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Essays by Anthony Warnecke on plasmids, microbial genetics, genomics and bacterial evolution.">
 
 <title>Writing – Anthony Warnecke</title>
 <style>
@@ -93,6 +94,8 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
+<link rel="icon" href="./favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -128,9 +131,18 @@ window.Quarto = {
 <link rel="stylesheet" href="writing.css">
 <link rel="stylesheet" href="assets/easter-egg.css">
 <meta property="og:title" content="Writing – Anthony Warnecke">
+<meta property="og:description" content="Essays by Anthony Warnecke on plasmids, microbial genetics, genomics and bacterial evolution.">
+<meta property="og:image" content="https://warnea.github.io/assets/og.png">
 <meta property="og:site_name" content="Anthony Warnecke">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="Writing – Anthony Warnecke">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Essays by Anthony Warnecke on plasmids, microbial genetics, genomics and bacterial evolution.">
+<meta name="twitter:image" content="https://warnea.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<link rel="canonical" href="https://warnea.github.io/writing.html">
 </head>
 
 <body class="nav-fixed writing-index quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -276,7 +288,8 @@ window.Quarto = {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -289,6 +302,14 @@ window.Quarto = {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -332,14 +353,14 @@ window.Quarto = {
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools tools-wide">
+              <div class="quarto-navbar-tools tools-wide">
     <a href="https://bsky.app/profile/warneckeanthony.bsky.social" title="Bluesky" class="quarto-navigation-tool px-1" aria-label="Bluesky"><i class="bi bi-bluesky"></i></a>
     <a href="https://www.linkedin.com/in/anthony-warnecke-5330b6234/" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
     <a href="https://orcid.org/0009-0006-2866-6623" title="ORCID" class="quarto-navigation-tool px-1" aria-label="ORCID"><i class="bi bi-orcid"></i></a>
     <a href="https://github.com/WarnEA" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -378,16 +399,6 @@ window.Quarto = {
 <div class="writing-list list">
 
   <article class="writing-entry">
-    <h2 class="listing-title"><a href="./posts/plasmids.html" class="no-external">Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes</a></h2>
-    <div class="writing-entry-meta">
-      <time class="listing-date">2 Oct 2026</time>
-      <span aria-hidden="true">·</span>
-      <span class="listing-reading-time">6 min</span>
-    </div>
-    <p class="listing-description">What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.</p>
-  </article>
-
-  <article class="writing-entry">
     <h2 class="listing-title"><a href="./posts/genomics.html" class="no-external">Why plasmids are more than resistance vectors</a></h2>
     <div class="writing-entry-meta">
       <time class="listing-date">2 Oct 2026</time>
@@ -395,6 +406,16 @@ window.Quarto = {
       <span class="listing-reading-time">2 min</span>
     </div>
     <p class="listing-description">The questions behind my PhD: how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution.</p>
+  </article>
+
+  <article class="writing-entry">
+    <h2 class="listing-title"><a href="./posts/plasmids.html" class="no-external">Plasmids, ecDNA and the evolutionary power of DNA outside chromosomes</a></h2>
+    <div class="writing-entry-meta">
+      <time class="listing-date">2 Oct 2026</time>
+      <span aria-hidden="true">·</span>
+      <span class="listing-reading-time">6 min</span>
+    </div>
+    <p class="listing-description">What bacterial plasmids and extrachromosomal DNA in cancer can teach us about copy number, inheritance and rapid evolution.</p>
   </article>
 
 </div>
@@ -432,7 +453,7 @@ window.Quarto = {
       <button class="pong-toggle" id="pong-toggle" type="button" autofocus="">Start game</button>
       <button class="pong-reset" id="pong-reset" type="button">Restart</button>
     </div>
-    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus — and make a zombie.</p>
+    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus and make a zombie.</p>
   </div>
 </dialog>
 <script>
@@ -442,6 +463,12 @@ window.Quarto = {
     const offset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
     const assetsBase = stylesheet ? new URL('./', stylesheet.href) : new URL(offset + 'assets/', document.baseURI);
     const assetVersion = 'pong-three-close-transfer';
+    const map = document.createElement('script');
+    map.src = new URL('plasmid-map.js?v=paw26-2', assetsBase).href;
+    document.head.appendChild(map);
+    const skip = Object.assign(document.createElement('a'), { className: 'skip-link', href: '#quarto-document-content', textContent: 'Skip to content' });
+    document.body.prepend(skip);
+    document.querySelectorAll('.quarto-color-scheme-toggle').forEach((toggle) => toggle.setAttribute('aria-label', 'Toggle dark mode'));
     const engine = document.createElement('script');
     const engineUrl = new URL('pong-engine.js', assetsBase);
     engineUrl.searchParams.set('v', assetVersion);

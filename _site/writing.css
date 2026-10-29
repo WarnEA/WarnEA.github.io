@@ -1,11 +1,8 @@
 /* A simple publication index and a comfortable measure for longer reading. */
 body.writing-index #quarto-content { padding-top: 0; }
-body.writing-index main.content {
-  width: 100%;
-  max-width: 760px;
-  margin-inline: auto;
-  padding-bottom: 5rem;
-}
+/* Reading pages keep the shared left edge and narrow the measure. */
+body.writing-index main.content { padding-bottom: 5rem; }
+body.writing-index main.content > *, body.writing-article main.content > * { max-width: 720px; }
 .writing-index #title-block-header { margin-block: 3.5rem 1rem; }
 .writing-heading {
   padding-bottom: 2rem;
@@ -42,14 +39,17 @@ body.writing-index main.content {
   letter-spacing: -.025em;
 }
 .writing-entry .listing-title a { color: var(--ink); text-decoration: none; }
-.writing-entry .listing-title a:hover { color: var(--sage); text-decoration: underline; }
+.writing-entry .listing-title a { background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat; transition: background-size .28s var(--ease); }
+.writing-entry .listing-title a:hover, .writing-entry .listing-title a:focus-visible { color: var(--ink); background-size: 100% 1px; }
 .writing-entry .listing-description {
   color: var(--muted);
   font-size: .93rem;
   line-height: 1.75;
   margin: 0;
 }
-body.writing-article main.content { max-width: 720px; margin-inline: auto; padding-bottom: 4.5rem; }
+body.writing-article main.content { padding-bottom: 4.5rem; }
+.writing-article #title-block-header .quarto-title { padding-bottom: 1.25rem; }
+.writing-article #title-block-header .description { color: var(--muted); font-size: 1.02rem; line-height: 1.65; }
 .writing-article #title-block-header { margin-block: 3.5rem 2rem; }
 .writing-article .quarto-title h1 {
   font-size: clamp(2.5rem, 4.5vw, 3.65rem);
@@ -63,10 +63,11 @@ body.writing-article main.content { max-width: 720px; margin-inline: auto; paddi
   column-gap: 2.5rem;
 }
 .writing-article .quarto-title-meta-heading {
-  font-size: .6rem;
+  font-size: .68rem;
   font-weight: 500;
   letter-spacing: .09em;
   color: var(--muted);
+  opacity: 1;
 }
 .writing-article .quarto-title-meta-contents {
   font-size: .78rem;
@@ -109,17 +110,16 @@ body.writing-article main.content { max-width: 720px; margin-inline: auto; paddi
   font-size: .8rem;
 }
 .writing-article .article-endnote p { margin: 0; }
-@media (min-width: 992px) {
-  body.writing-index #quarto-content { padding-inline: 32px; }
-}
 @media (max-width: 600px) {
   .writing-index #title-block-header { margin-top: 2.5rem; }
   .writing-heading { padding-bottom: 1.5rem; }
   .writing-entry { padding-block: 1.5rem; }
   .writing-entry .listing-description { font-size: .9rem; }
   .writing-article #title-block-header { margin-top: 2rem; }
+  .writing-article .quarto-title h1 { font-size: clamp(2.1rem, 9vw, 2.6rem); }
   .writing-article .quarto-title-meta { column-gap: 1.5rem; }
   .writing-article .article-lead { font-size: 1.22rem; }
   .writing-article main.content > p,
   .writing-article main.content > section > p { font-size: .94rem; line-height: 1.85; }
 }
+.writing-article main.content a[href*="doi.org"] { display: inline-block; padding-block: .3rem; }

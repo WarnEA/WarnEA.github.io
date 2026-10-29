@@ -6,7 +6,7 @@ author: "Anthony Warnecke"
 description: "The questions behind my PhD: how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution."
 categories: [Plasmid biology, Bacterial evolution]
 body-classes: writing-article
-page-layout: article
+page-layout: full
 toc: false
 anchor-sections: false
 title-block-categories: false
@@ -14,7 +14,7 @@ title-block-categories: false
 
 [← All writing](../writing.qmd){.article-back-link}
 
-::: {.article-lead}
+::: article-lead
 Plasmids are mobile genetic elements that can move genetic information between bacterial cells. They are best known for carrying antimicrobial-resistance genes, but their effects on host cells can extend well beyond resistance.
 :::
 
@@ -34,6 +34,6 @@ Phenotyping puts bacterial behaviour at the centre of the work. Experimental evo
 
 The aim is to understand the connection between mobile DNA, the cells that carry it and the ways bacteria adapt. This note sets out the questions motivating that work; the research itself is ongoing.
 
-::: {.article-endnote}
+::: article-endnote
 [More about my PhD research →](../projects.qmd#phd)
 :::

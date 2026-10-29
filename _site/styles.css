@@ -3,20 +3,24 @@
   --paper: #f8f7f3;
   --surface: #eeefea;
   --ink: #252b28;
-  --muted: #60675f;
+  --muted: #5b6259;
   --sage: #3f594c;
   --accent: #526656;
   --rule: #dcded6;
+  --gene: #a24f37;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --column: 1000px;
   --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
 }
 body.quarto-dark {
-  --paper: #202622;
+  --paper: #1d2320;
   --surface: #2a322c;
   --ink: #eceee7;
   --muted: #b8c0b0;
   --sage: #bacbad;
   --accent: #c8d4bc;
-  --rule: #455142;
+  --rule: #3d473f;
+  --gene: #e08a6c;
   color-scheme: dark;
 }
 html { min-height: 100%; scroll-padding-top: 100px; }
@@ -34,11 +38,14 @@ body {
 a { color: var(--sage); text-underline-offset: .22em; }
 a:hover { color: var(--accent); }
 a, button, summary { -webkit-tap-highlight-color: transparent; }
-:where(a, button, summary, input, [tabindex]):focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 5px;
-  border-radius: 2px;
+:where(a, button, summary, input, [tabindex]):focus-visible, #quarto-header .nav-link:focus-visible, #quarto-header .navbar-brand:focus-visible, #quarto-header .quarto-navigation-tool:focus-visible, #quarto-header .navbar-toggler:focus-visible {
+  outline: 2px solid var(--ink) !important;
+  outline-offset: 3px;
+  border-radius: 0;
+  box-shadow: none !important;
 }
+.skip-link { position: fixed; z-index: 1100; left: 16px; top: 12px; padding: .6rem 1rem; background: var(--ink); color: var(--paper); font-size: .85rem; text-decoration: none; translate: 0 -200%; transition: translate .18s var(--ease); }
+.skip-link:focus-visible { translate: 0 0; color: var(--paper); }
 h1, h2, h3 { color: var(--ink); }
 /* Quarto provides the accessible menu and colour-scheme control. */
 #quarto-header { background: var(--paper); }
@@ -48,25 +55,37 @@ h1, h2, h3 { color: var(--ink); }
   box-shadow: none;
   padding-block: 1rem;
 }
-.navbar > .container-fluid { max-width: 1240px; padding-inline: 32px; }
+.navbar > .container-fluid { max-width: calc(var(--column) + 64px); padding-inline: 32px; }
 .navbar-brand { margin-right: 3rem; }
 .navbar-title { color: var(--ink); font-family: inherit; font-size: 1rem; font-weight: 600; letter-spacing: -.025em; }
 .navbar-nav .nav-link {
   color: var(--muted) !important;
   font-size: .85rem;
   padding: .45rem .75rem !important;
-  transition: color .18s ease;
+  transition: color .18s var(--ease);
 }
-.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--ink) !important; }
-.navbar-nav .nav-link.active .menu-text { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: .65em; text-decoration-thickness: 2px; }
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus-visible, .navbar-nav .nav-link.active { color: var(--ink) !important; }
+/* Primary links annotate themselves: a rule draws in from the left, like a feature being marked. */
+.navbar-nav .nav-link .menu-text, .navbar-title, .home-link-title { position: relative; }
+.navbar-nav .nav-link .menu-text::after, .navbar-title::after, .home-link-title::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -.5em; height: 2px; background: var(--ink);
+  scale: 0 1; transform-origin: left; transition: scale .28s var(--ease);
+}
+.navbar-nav .nav-link.active .menu-text::after { scale: 1 1; background: var(--gene); }
+.navbar-nav .nav-link:hover .menu-text::after, .navbar-nav .nav-link:focus-visible .menu-text::after,
+.navbar-brand:hover .navbar-title::after, .navbar-brand:focus-visible .navbar-title::after { scale: 1 1; }
+.navbar-nav .nav-link.active:hover .menu-text::after { background: var(--ink); }
+.navbar-brand { padding-block: .45rem; }
 .navbar .quarto-color-scheme-toggle, .navbar #quarto-search { color: var(--ink); }
 .navbar .quarto-navbar-tools { flex-wrap: nowrap; gap: .35rem; }
-.navbar .quarto-navigation-tool { color: var(--muted); }
-.navbar .quarto-navigation-tool:hover { color: var(--ink); }
+.navbar .quarto-navigation-tool { color: var(--muted); display: inline-grid; place-items: center; min-width: 36px; min-height: 36px; transition: color .18s var(--ease), translate .18s var(--ease); }
+.navbar .quarto-navigation-tool:hover, .navbar .quarto-navigation-tool:focus-visible { color: var(--ink); translate: 0 -2px; }
 .navbar .bi-orcid::before { content: ""; display: inline-block; width: 1em; height: 1em; background: url("assets/orcid.svg") center / contain no-repeat; }
-.navbar-toggler { color: var(--ink); border-color: var(--rule); }
-main.content { max-width: 1000px; padding-bottom: 4rem; }
+.navbar-toggler { color: var(--ink); border: 0; padding: .4rem; min-width: 44px; min-height: 44px; box-shadow: none !important; }
+main.content { width: 100%; max-width: var(--column); margin-inline: auto; padding-bottom: 4rem; }
+#quarto-content { padding-inline: 32px; }
 #title-block-header { margin-block: 3rem 2.5rem; }
+body:not(:has(.home-hero)) .quarto-title { position: relative; padding-top: 3.25rem; }
 .quarto-title h1 {
   font-family: var(--serif);
   font-size: clamp(2.5rem, 5vw, 3.3rem);
@@ -75,24 +94,10 @@ main.content { max-width: 1000px; padding-bottom: 4rem; }
   line-height: 1.1;
 }
 main.content h2 { font-family: var(--serif); font-size: 1.85rem; font-weight: 400; border-color: var(--rule); }
+.page-lead, main.content > p, main.content > section > p { max-width: 66ch; }
 .page-lead { max-width: 710px; color: var(--muted); font-size: 1.13rem; margin-bottom: 3rem; }
-.eyebrow { font-size: .66rem; letter-spacing: .13em; font-weight: 600; text-transform: uppercase; color: var(--sage); }
-/* A single introduction; the navbar carries the site navigation. */
-body:has(.home-hero) #quarto-content { padding-top: 0; }
-body:has(.home-hero) main.content { width: 100%; max-width: 1000px; margin-inline: auto; padding-bottom: 0; }
-body:has(.home-hero) #title-block-header { display: none; }
-.home-hero { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-height: min(660px, calc(100svh - 190px)); padding: 4rem 0; }
-.home-role { color: var(--muted); font-size: .86rem; margin-bottom: 1.4rem; }
-.home-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(3.2rem, 6vw, 5.2rem); line-height: 1.1; letter-spacing: -.005em; margin: 0 0 1.6rem; }
-.home-intro { max-width: 580px; font-size: 1.13rem; color: var(--muted); line-height: 1.8; margin: 0; }
-.home-hero > * { animation: profile-enter .65s cubic-bezier(.22,1,.36,1) both; }
-.home-hero > :nth-child(2) { animation-delay: .08s; }
-.home-hero > :nth-child(3) { animation-delay: .16s; }
-@keyframes profile-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .button-link { display: inline-flex; align-items: center; justify-content: center; gap: 1.4rem; padding: .72rem 1.15rem; background: var(--sage); color: var(--paper); text-decoration: none; font-size: .8rem; border: 1px solid var(--sage); transition: background .18s; }
 .button-link:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.text-link { display: inline-flex; align-items: center; gap: 1rem; font-size: .82rem; font-weight: 500; text-decoration: none; }
-.text-link:hover { text-decoration: underline; }
 /* Research: readable summaries and native, keyboard-operable disclosures. */
 .timeline { margin: 2.5rem 0; }
 .timeline-item { display: grid; grid-template-columns: 135px 1fr; gap: 2rem; padding-block: 2rem; border-top: 1px solid var(--rule); }
@@ -123,29 +128,106 @@ main.content h2.timeline-title { font-size: 1.65rem; margin: 0 0 .5rem; border: 
 .cv-grid h3 { margin: 1.5rem 0 .3rem; font-size: 1.07rem; font-weight: 500; line-height: 1.45; }
 .cv-grid p { margin: .3rem 0 .9rem; line-height: 1.7; font-size: .88rem; color: var(--muted); }
 .cv-grid strong { color: var(--ink); font-weight: 500; }
-.quarto-listing .listing-item { padding-block: 1.5rem; border-bottom: 1px solid var(--rule); }
 .quarto-listing .listing-title { font-family: var(--serif); font-size: 1.4rem; }
-.nav-footer { border-top: 1px solid var(--rule); background: var(--paper); color: var(--muted); padding: 1.5rem max(24px, calc((100vw - 1176px) / 2)); font-size: .7rem; }
+.nav-footer { border-top: 1px solid var(--rule); background: var(--paper); color: var(--muted); padding: 1.5rem max(24px, calc((100% - var(--column)) / 2)); font-size: .75rem; }
+footer.footer .nav-footer { padding-inline: max(16px, calc((100vw - var(--column)) / 2)) !important; }
 .nav-footer p { margin: 0; }
-.footer-socials { display: inline-flex; align-items: center; gap: 1rem; }
-.footer-socials a { color: var(--muted); font-size: .95rem; line-height: 1; }
-.footer-socials a:hover { color: var(--ink); }
+/* Home: the name beside pAW26, the site drawn as a plasmid map. */
+body:has(.home-hero) #quarto-content { padding-top: 0; }
+body:has(.home-hero) main.content { padding-bottom: 0; }
+body:has(.home-hero) #title-block-header { display: none; }
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center; gap: 2rem; min-height: min(760px, calc(100svh - 150px)); padding: 3.5rem 0; }
+.home-copy { min-width: 0; }
+.home-role { color: var(--muted); font-size: .86rem; margin: 0 0 1.4rem; }
+.home-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(3.2rem, 6.2vw, 5.6rem); line-height: 1; letter-spacing: -.035em; margin: 0 0 1.6rem -.04em; }
+.home-intro { max-width: 30rem; font-size: 1.13rem; color: var(--muted); line-height: 1.7; margin: 0 0 2.25rem; }
+.home-next { list-style: none; margin: 0 0 2rem; padding: 0; border-top: 1px solid var(--rule); max-width: 30rem; }
+.home-next li { border-bottom: 1px solid var(--rule); }
+.home-link { display: grid; gap: .2rem; padding: .95rem 0; color: var(--ink); text-decoration: none; }
+.home-link:hover, .home-link:focus-visible { color: var(--ink); }
+.home-link-kind { color: var(--muted); font-size: .75rem; letter-spacing: .02em; }
+.home-link-title { justify-self: start; font-family: var(--serif); font-size: 1.12rem; line-height: 1.35; }
+.home-link-title::after { bottom: -.3em; height: 1px; }
+.home-link:hover .home-link-title::after, .home-link:focus-visible .home-link-title::after { scale: 1 1; }
+.home-elsewhere { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0; font-size: .85rem; }
+.home-elsewhere a { display: inline-block; padding-block: .35rem; color: var(--muted); }
+.home-elsewhere a:hover, .home-elsewhere a:focus-visible { color: var(--ink); }
+.home-hero > * { animation: profile-enter .65s var(--ease) both; }
+.home-hero > :nth-child(2) { animation-delay: .12s; }
+@keyframes profile-enter { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+.home-map { margin: 0; min-width: 0; }
+.home-map .pmap { display: block; width: 100%; height: auto; aspect-ratio: 1; }
+.home-map .pmap-fork-layer { aspect-ratio: auto; }
+.home-map figcaption { margin-top: -.5rem; text-align: center; color: var(--muted); font-size: .75rem; }
+.home-map:not(:has(svg)) { aspect-ratio: 1; }
+.is-deletion h1 { color: var(--ink); }
+
+/* The map itself. Colours come from the page tokens, so it follows the theme. */
+.pmap { overflow: visible; font-family: var(--serif); }
+.pmap a { text-decoration: none; }
+.pmap-strand { fill: none; stroke: var(--rule); stroke-width: 1; }
+.pmap-backbone { fill: none; stroke: var(--sage); stroke-width: 2.5; }
+.pmap--mini .pmap-backbone { stroke-width: 1.5; }
+.pmap-tick { stroke: var(--muted); stroke-width: 1; }
+.pmap-kb { fill: var(--muted); font: 500 11px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-variant-numeric: tabular-nums; }
+.pmap-ori { fill: var(--ink); }
+.pmap-ori-label { fill: var(--ink); font-size: 15px; font-style: italic; }
+.pmap-feature { cursor: pointer; }
+.pmap-arc { fill: color-mix(in srgb, var(--sage) 22%, var(--paper)); stroke: var(--sage); stroke-width: 1.25; transition: fill .28s var(--ease), stroke .28s var(--ease); }
+.pmap--mini .pmap-arc { stroke-width: .75; }
+.pmap-feature.is-current .pmap-arc { fill: var(--gene); stroke: var(--gene); }
+.pmap-label { fill: var(--ink); font-size: 19px; transition: fill .28s var(--ease); }
+.pmap-bp { fill: var(--muted); font: 500 11px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-variant-numeric: tabular-nums; }
+.pmap-name { fill: var(--ink); font-size: 34px; font-style: italic; letter-spacing: -.02em; }
+.pmap-size { fill: var(--muted); font: 500 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+/* Pointing at a section, in the nav or on the ring, lights its gene. */
+.pmap-feature:hover .pmap-arc,
+body:has(.nav-link[href$="about.html"]:is(:hover, :focus-visible)) .f-about .pmap-arc,
+body:has(.nav-link[href$="projects.html"]:is(:hover, :focus-visible)) .f-research .pmap-arc,
+body:has(.nav-link[href$="writing.html"]:is(:hover, :focus-visible)) .f-writing .pmap-arc,
+body:has(.nav-link[href$="CV.html"]:is(:hover, :focus-visible)) .f-cv .pmap-arc,
+body:has(.home-link[href*="projects.html"]:is(:hover, :focus-visible)) .f-research .pmap-arc,
+body:has(.home-link[href*="posts/"]:is(:hover, :focus-visible)) .f-writing .pmap-arc { fill: var(--gene); stroke: var(--gene); }
+.pmap-feature:hover .pmap-label { fill: var(--gene); }
+/* The replication fork: one slow turn a minute from ori, on the compositor. */
+.pmap-stack { position: relative; }
+.pmap-fork-layer { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; animation: pmap-replicate 60s linear infinite; will-change: transform; }
+.pmap-fork-trail { fill: none; stroke: var(--gene); stroke-width: 2.5; stroke-linecap: round; opacity: .55; }
+.pmap-fork-dot { fill: var(--gene); }
+@keyframes pmap-replicate { to { rotate: 360deg; } }
+.is-deletion .pmap-fork-layer { animation-duration: 90s; }
+
+/* Inner pages carry their locus above the title. */
+.pmap-locus { position: absolute; top: 0; left: 0; display: flex; align-items: center; gap: .7rem; margin: 0; color: var(--muted); font-size: .75rem; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.pmap-locus .pmap { width: 30px; height: 30px; flex: none; }
+
+/* Small targets, given room. */
+main.content a[href*="#ref-"] { display: inline-block; min-width: 24px; min-height: 24px; text-align: center; line-height: 24px; }
+.writing-article .article-back-link, .writing-article .article-endnote a { display: inline-block; padding-block: .4rem; }
+
 /* Keep the main menu and reading layouts usable on small screens. */
-@media (min-width: 992px) {
-  body:has(.home-hero) #quarto-content { padding-inline: 32px; }
-}
 @media (max-width: 1100px) { .navbar-brand { margin-right: 1.5rem; } }
 @media (max-width: 991px) {
-  .navbar > .container-fluid { padding-inline: 24px; }
+  .navbar > .container-fluid { padding-inline: 24px; flex-wrap: wrap; }
+  #quarto-header .navbar-brand-container { order: 1; margin-inline: 0 !important; flex: 1; display: flex; justify-content: flex-start; }
+  #quarto-header .navbar-toggler { order: 2; margin-right: -.4rem; }
+  #quarto-header .navbar-collapse { order: 3; flex-basis: 100%; }
+  .navbar { padding-block: .6rem; }
+  .navbar-collapse .quarto-navbar-tools { padding-block: .75rem .25rem; border-top: 1px solid var(--rule); margin-top: .5rem; }
+  .navbar-nav .nav-link { font-size: 1rem; padding-block: .6rem !important; }
+  #quarto-content { padding-inline: 24px; }
+  .home-hero { grid-template-columns: 1fr; gap: 1rem; min-height: 0; padding-block: 2.5rem 1.5rem; }
+  .home-map { max-width: 460px; width: 100%; justify-self: center; }
+  .home-copy { display: contents; }
+  .home-hero > .home-copy > * { animation: none; }
+  .home-map { order: 1; margin-block: .5rem 1.5rem; max-width: 340px; }
+  .home-hero .quarto-listing, .home-elsewhere { order: 2; }
+  .home-hero .home-role, .home-hero h1, .home-intro { order: 0; }
   .navbar-brand { margin-right: 1rem; }
   .navbar-collapse { padding-block: 1rem .5rem; }
   .cv-grid { gap: 2rem; }
 }
 @media (max-width: 700px) {
-  .home-hero { min-height: calc(100svh - 220px); padding-block: 3rem; }
-  .home-hero h1 { font-size: clamp(3.1rem, 13vw, 4.5rem); }
-  .home-role { font-size: .8rem; }
-  .home-intro { font-size: 1rem; }
   .timeline-item { grid-template-columns: 1fr; gap: .6rem; padding-block: 1.5rem; }
   .timeline-date { display: flex; gap: 1rem; align-items: baseline; }
   .timeline-date p { margin: 0; }
@@ -157,6 +239,9 @@ main.content h2.timeline-title { font-size: 1.65rem; margin: 0 0 .5rem; border: 
 }
 @media (max-width: 480px) {
   .navbar > .container-fluid { padding-inline: 16px; }
+  #quarto-content { padding-inline: 16px; }
+  .home-hero h1 { font-size: clamp(3rem, 15vw, 4rem); }
+  .home-intro { font-size: 1.02rem; }
   .navbar-brand { margin-right: .35rem; }
   .navbar-title { font-size: .87rem; }
   .navbar .quarto-navbar-tools { gap: .1rem; }

@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Curriculum vitae of Anthony Warnecke: education, research experience, technical skills, memberships and awards.">
 
 <title>Curriculum vitae – Anthony Warnecke</title>
 <style>
@@ -37,7 +38,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -63,15 +63,26 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<link rel="icon" href="./favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="writing.css">
 <link rel="stylesheet" href="assets/easter-egg.css">
 <meta property="og:title" content="Curriculum vitae – Anthony Warnecke">
+<meta property="og:description" content="Curriculum vitae of Anthony Warnecke: education, research experience, technical skills, memberships and awards.">
+<meta property="og:image" content="https://warnea.github.io/assets/og.png">
 <meta property="og:site_name" content="Anthony Warnecke">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="Curriculum vitae – Anthony Warnecke">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Curriculum vitae of Anthony Warnecke: education, research experience, technical skills, memberships and awards.">
+<meta name="twitter:image" content="https://warnea.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<link rel="canonical" href="https://warnea.github.io/CV.html">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -217,7 +228,8 @@ ul.task-list li input[type="checkbox"] {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -230,6 +242,14 @@ ul.task-list li input[type="checkbox"] {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -273,14 +293,14 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools tools-wide">
+              <div class="quarto-navbar-tools tools-wide">
     <a href="https://bsky.app/profile/warneckeanthony.bsky.social" title="Bluesky" class="quarto-navigation-tool px-1" aria-label="Bluesky"><i class="bi bi-bluesky"></i></a>
     <a href="https://www.linkedin.com/in/anthony-warnecke-5330b6234/" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
     <a href="https://orcid.org/0009-0006-2866-6623" title="ORCID" class="quarto-navigation-tool px-1" aria-label="ORCID"><i class="bi bi-orcid"></i></a>
     <a href="https://github.com/WarnEA" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -319,25 +339,25 @@ ul.task-list li input[type="checkbox"] {
 <div class="cv-grid">
 <div class="cv-left">
 <section id="education" class="level2">
-<h2 class="anchored" data-anchor-id="education">Education</h2>
+<h2 data-anchor-id="education">Education</h2>
 <section id="phd-biological-sciences-evolution-ecology-behaviour" class="level3">
-<h3 class="anchored" data-anchor-id="phd-biological-sciences-evolution-ecology-behaviour">PhD Biological Sciences (Evolution, Ecology &amp; Behaviour)</h3>
+<h3 data-anchor-id="phd-biological-sciences-evolution-ecology-behaviour">PhD Biological Sciences (Evolution, Ecology &amp; Behaviour)</h3>
 <p><strong>University of Liverpool</strong> · 2026–present</p>
 <p>Evolution, Ecology and Behaviour. MRC-funded research on plasmid-mediated changes to bacterial behaviour.</p>
 </section>
 <section id="mres-infection-microbiology-microbiomes" class="level3">
-<h3 class="anchored" data-anchor-id="mres-infection-microbiology-microbiomes">MRes Infection, Microbiology &amp; Microbiomes</h3>
+<h3 data-anchor-id="mres-infection-microbiology-microbiomes">MRes Infection, Microbiology &amp; Microbiomes</h3>
 <p><strong>University of Liverpool</strong> · 2025–2026</p>
 <p>Comparative metagenomics of gut Clostridia.</p>
 </section>
 <section id="bsc-hons-microbiology" class="level3">
-<h3 class="anchored" data-anchor-id="bsc-hons-microbiology">BSc (Hons) Microbiology</h3>
+<h3 data-anchor-id="bsc-hons-microbiology">BSc (Hons) Microbiology</h3>
 <p><strong>University of Liverpool</strong> · 2022–2025</p>
 <p><strong>First Class Honours</strong></p>
 </section>
 </section>
 <section id="technical-skills" class="level2">
-<h2 class="anchored" data-anchor-id="technical-skills">Technical skills</h2>
+<h2 data-anchor-id="technical-skills">Technical skills</h2>
 <p><strong>Microbiology</strong><br>
 Bacterial culture · aseptic technique · viable counts · antimicrobial assays · phage assays</p>
 <p><strong>Molecular biology</strong><br>
@@ -350,7 +370,7 @@ FIB-SEM · confocal microscopy · fluorescence microscopy · 3D reconstruction</
 R · Python · Bash · Linux · HPC</p>
 </section>
 <section id="memberships" class="level2">
-<h2 class="anchored" data-anchor-id="memberships">Memberships</h2>
+<h2 data-anchor-id="memberships">Memberships</h2>
 <p><strong>AMRSB</strong> · Royal Society of Biology<br>
 <strong>Member</strong> · Microbiology Society<br>
 <strong>Member (Mem.Res)</strong> · Royal Entomological Society</p>
@@ -358,14 +378,14 @@ R · Python · Bash · Linux · HPC</p>
 </div>
 <div class="cv-right">
 <section id="research-experience" class="level2">
-<h2 class="anchored" data-anchor-id="research-experience">Research experience</h2>
+<h2 data-anchor-id="research-experience">Research experience</h2>
 <section id="phd-student" class="level3">
-<h3 class="anchored" data-anchor-id="phd-student">PhD Student</h3>
+<h3 data-anchor-id="phd-student">PhD Student</h3>
 <p><strong>University of Liverpool</strong> · 2026–present</p>
 <p>Investigating how multidrug-resistance plasmids alter bacterial behaviour and evolutionary dynamics in <em>P. aeruginosa</em>.</p>
 </section>
 <section id="mres-research-project" class="level3">
-<h3 class="anchored" data-anchor-id="mres-research-project">MRes Research Project</h3>
+<h3 data-anchor-id="mres-research-project">MRes Research Project</h3>
 <p><strong>University of Liverpool</strong> · 2025–2026<br>
 <strong>Supervisor:</strong> Prof.&nbsp;Alistair Darby</p>
 <p>Genomic and ecological differences in gut Clostridia, with a focus on <em>Clostridium perfringens</em>.</p>
@@ -373,7 +393,7 @@ R · Python · Bash · Linux · HPC</p>
 <strong>Software:</strong> Kraken2 · Bracken · MetaWRAP · MEGAHIT · CheckM · FastANI · dRep · R · Bash</p>
 </section>
 <section id="undergraduate-dissertation" class="level3">
-<h3 class="anchored" data-anchor-id="undergraduate-dissertation">Undergraduate Dissertation</h3>
+<h3 data-anchor-id="undergraduate-dissertation">Undergraduate Dissertation</h3>
 <p><strong>University of Liverpool</strong> · 2024–2025<br>
 <strong>Supervisor:</strong> Dr Daniel Leybourne</p>
 <p>Rhizobacteria-mediated changes to barley responses to <em>Sitobion avenae</em> and barley yellow dwarf virus.</p>
@@ -381,8 +401,8 @@ R · Python · Bash · Linux · HPC</p>
 <strong>Output:</strong> Royal Entomological Society Student Forum 2025</p>
 </section>
 <section id="uniq-research-internship" class="level3">
-<h3 class="anchored" data-anchor-id="uniq-research-internship">UNIQ+ Research Internship</h3>
-<p><strong>University of Oxford — Langdale Lab</strong> · Summer 2024<br>
+<h3 data-anchor-id="uniq-research-internship">UNIQ+ Research Internship</h3>
+<p><strong>University of Oxford, Langdale Lab</strong> · Summer 2024<br>
 <strong>Supervisor:</strong> Dr Tina Schreier</p>
 <p>Plasmodesmata distribution across the C3–C4 evolutionary gradient in <em>Flaveria</em>.</p>
 <p><strong>Methods:</strong> FIB-SEM · confocal microscopy · image segmentation · 3D reconstruction<br>
@@ -391,7 +411,7 @@ R · Python · Bash · Linux · HPC</p>
 </section>
 </section>
 <section id="awards-funding" class="level2">
-<h2 class="anchored" data-anchor-id="awards-funding">Awards &amp; funding</h2>
+<h2 data-anchor-id="awards-funding">Awards &amp; funding</h2>
 <p><strong>MRC-funded PhD Studentship</strong> · University of Liverpool · 2026–<br>
 <strong>UNIQ+ Research Internship</strong> · University of Oxford · 2024<br>
 <strong>Best Presentation Prize</strong> · University of Oxford · 2024</p>
@@ -429,7 +449,7 @@ R · Python · Bash · Linux · HPC</p>
       <button class="pong-toggle" id="pong-toggle" type="button" autofocus="">Start game</button>
       <button class="pong-reset" id="pong-reset" type="button">Restart</button>
     </div>
-    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus — and make a zombie.</p>
+    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus and make a zombie.</p>
   </div>
 </dialog>
 <script>
@@ -439,6 +459,12 @@ R · Python · Bash · Linux · HPC</p>
     const offset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
     const assetsBase = stylesheet ? new URL('./', stylesheet.href) : new URL(offset + 'assets/', document.baseURI);
     const assetVersion = 'pong-three-close-transfer';
+    const map = document.createElement('script');
+    map.src = new URL('plasmid-map.js?v=paw26-2', assetsBase).href;
+    document.head.appendChild(map);
+    const skip = Object.assign(document.createElement('a'), { className: 'skip-link', href: '#quarto-document-content', textContent: 'Skip to content' });
+    document.body.prepend(skip);
+    document.querySelectorAll('.quarto-color-scheme-toggle').forEach((toggle) => toggle.setAttribute('aria-label', 'Toggle dark mode'));
     const engine = document.createElement('script');
     const engineUrl = new URL('pong-engine.js', assetsBase);
     engineUrl.searchParams.set('v', assetVersion);
@@ -468,13 +494,6 @@ R · Python · Bash · Linux · HPC</p>
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="About Anthony Warnecke: PhD student in plasmid biology at the University of Liverpool, with a background in microbiology and genomics.">
 
 <title>About me – Anthony Warnecke</title>
 <style>
@@ -37,7 +38,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -63,20 +63,29 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<link rel="icon" href="./favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="writing.css">
 <link rel="stylesheet" href="assets/easter-egg.css">
 <meta property="og:title" content="About me – Anthony Warnecke">
-<meta property="og:description" content="Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution.">
+<meta property="og:description" content="About Anthony Warnecke: PhD student in plasmid biology at the University of Liverpool, with a background in microbiology and genomics.">
+<meta property="og:image" content="https://warnea.github.io/assets/og.png">
 <meta property="og:site_name" content="Anthony Warnecke">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="About me – Anthony Warnecke">
-<meta name="twitter:description" content="Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution.">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="About Anthony Warnecke: PhD student in plasmid biology at the University of Liverpool, with a background in microbiology and genomics.">
+<meta name="twitter:image" content="https://warnea.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<link rel="canonical" href="https://warnea.github.io/about.html">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -219,7 +228,8 @@ ul.task-list li input[type="checkbox"] {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -232,6 +242,14 @@ ul.task-list li input[type="checkbox"] {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -275,24 +293,24 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools tools-wide">
+              <div class="quarto-navbar-tools tools-wide">
     <a href="https://bsky.app/profile/warneckeanthony.bsky.social" title="Bluesky" class="quarto-navigation-tool px-1" aria-label="Bluesky"><i class="bi bi-bluesky"></i></a>
     <a href="https://www.linkedin.com/in/anthony-warnecke-5330b6234/" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
     <a href="https://orcid.org/0009-0006-2866-6623" title="ORCID" class="quarto-navigation-tool px-1" aria-label="ORCID"><i class="bi bi-orcid"></i></a>
     <a href="https://github.com/WarnEA" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -302,7 +320,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -319,15 +337,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>My previous projects have explored plant connectivity, rhizobacteria and insect–plant interactions, and the genomic diversity of gut Clostridia.</p>
 <section id="education" class="level2">
-<h2 class="anchored" data-anchor-id="education">Education</h2>
+<h2 data-anchor-id="education">Education</h2>
 <div class="education-list">
-  <div class="education-entry"><p>2026–present</p><div><h3 class="anchored">PhD Biological Sciences</h3><p>Evolution, Ecology and Behaviour · University of Liverpool</p></div></div>
-  <div class="education-entry"><p>2025–2026</p><div><h3 class="anchored">MRes Infection, Microbiology and Microbiomes</h3><p>University of Liverpool</p></div></div>
-  <div class="education-entry"><p>2022–2025</p><div><h3 class="anchored">BSc (Hons) Microbiology</h3><p>First Class Honours · University of Liverpool</p></div></div>
+  <div class="education-entry"><p>2026–present</p><div><h3>PhD Biological Sciences</h3><p>Evolution, Ecology and Behaviour · University of Liverpool</p></div></div>
+  <div class="education-entry"><p>2025–2026</p><div><h3>MRes Infection, Microbiology and Microbiomes</h3><p>University of Liverpool</p></div></div>
+  <div class="education-entry"><p>2022–2025</p><div><h3>BSc (Hons) Microbiology</h3><p>First Class Honours · University of Liverpool</p></div></div>
 </div>
 </section>
 <section id="research-interests" class="level2">
-<h2 class="anchored" data-anchor-id="research-interests">Research interests</h2>
+<h2 data-anchor-id="research-interests">Research interests</h2>
 <p>Plasmid biology · microbial genetics · antimicrobial resistance · bacterial evolution · genomics · host–microbe interactions</p>
 
 
@@ -361,7 +379,7 @@ ul.task-list li input[type="checkbox"] {
       <button class="pong-toggle" id="pong-toggle" type="button" autofocus="">Start game</button>
       <button class="pong-reset" id="pong-reset" type="button">Restart</button>
     </div>
-    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus — and make a zombie.</p>
+    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus and make a zombie.</p>
   </div>
 </dialog>
 <script>
@@ -371,6 +389,12 @@ ul.task-list li input[type="checkbox"] {
     const offset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
     const assetsBase = stylesheet ? new URL('./', stylesheet.href) : new URL(offset + 'assets/', document.baseURI);
     const assetVersion = 'pong-three-close-transfer';
+    const map = document.createElement('script');
+    map.src = new URL('plasmid-map.js?v=paw26-2', assetsBase).href;
+    document.head.appendChild(map);
+    const skip = Object.assign(document.createElement('a'), { className: 'skip-link', href: '#quarto-document-content', textContent: 'Skip to content' });
+    document.body.prepend(skip);
+    document.querySelectorAll('.quarto-color-scheme-toggle').forEach((toggle) => toggle.setAttribute('aria-label', 'Toggle dark mode'));
     const engine = document.createElement('script');
     const engineUrl = new URL('pong-engine.js', assetsBase);
     engineUrl.searchParams.set('v', assetVersion);
@@ -400,13 +424,6 @@ ul.task-list li input[type="checkbox"] {
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

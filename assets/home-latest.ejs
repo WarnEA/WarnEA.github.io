@@ -1,0 +1,8 @@
+```{=html}
+<ul class="home-next">
+  <li><a class="home-link" href="projects.html#phd"><span class="home-link-kind">Current project</span><span class="home-link-title">Plasmid manipulation of bacterial behaviour in <em>Pseudomonas aeruginosa</em></span></a></li>
+<% for (const item of items) { %>
+  <li><a class="home-link" href="<%- item.path %>"><span class="home-link-kind">Latest essay</span><span class="home-link-title"><%= item.title %></span></a></li>
+<% } %>
+</ul>
+```

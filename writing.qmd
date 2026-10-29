@@ -1,4 +1,9 @@
 ---
+description-meta: "Essays by Anthony Warnecke on plasmids, microbial genetics, genomics and bacterial evolution."
+open-graph:
+  description: "Essays by Anthony Warnecke on plasmids, microbial genetics, genomics and bacterial evolution."
+twitter-card:
+  description: "Essays by Anthony Warnecke on plasmids, microbial genetics, genomics and bacterial evolution."
 title: "Writing"
 page-layout: full
 body-classes: writing-index

@@ -1,4 +1,9 @@
 ---
+description-meta: "Research projects by Anthony Warnecke, from plasmid manipulation of Pseudomonas aeruginosa to gut Clostridia genomics and C4 photosynthesis."
+open-graph:
+  description: "Research projects by Anthony Warnecke, from plasmid manipulation of Pseudomonas aeruginosa to gut Clostridia genomics and C4 photosynthesis."
+twitter-card:
+  description: "Research projects by Anthony Warnecke, from plasmid manipulation of Pseudomonas aeruginosa to gut Clostridia genomics and C4 photosynthesis."
 title: "Research"
 toc: false
 page-layout: full
@@ -18,7 +23,7 @@ Projects in microbial genetics, genomics and host–microbe interactions.
 [Current Project]{.current-label}
 :::
 ::: {.timeline-card}
-## PhD — Microbial Genetics {.timeline-title}
+## PhD · Microbial genetics {.timeline-title}
 
 **University of Liverpool**
 
@@ -40,7 +45,7 @@ Investigating how antimicrobial-resistance plasmids alter bacterial behaviour an
 2025–2026
 :::
 ::: {.timeline-card}
-## MRes — Gut Microbial Genomics {.timeline-title}
+## MRes · Gut microbial genomics {.timeline-title}
 
 **University of Liverpool**
 
@@ -62,7 +67,7 @@ Investigated genomic and ecological differences in gut Clostridia, with particul
 2024–2025
 :::
 ::: {.timeline-card}
-## BSc - Plant-Microbe Interactions {.timeline-title}
+## BSc · Plant-microbe interactions {.timeline-title}
 
 **University of Liverpool**
 
@@ -84,7 +89,7 @@ Investigated whether rhizobacterial inoculation could alter barley responses to 
 Summer 2024
 :::
 ::: {.timeline-card}
-## UNIQ+ Research Internship - Photosynthesis Evolution {.timeline-title}
+## UNIQ+ research internship · Photosynthesis evolution {.timeline-title}
 
 **University of Oxford**
 

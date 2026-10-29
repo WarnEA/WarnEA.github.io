@@ -8,7 +8,7 @@
 
 <meta name="description" content="Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution.">
 
-<title>Anthony Warnecke — microbial genetics – Anthony Warnecke</title>
+<title>Plasmid biology, University of Liverpool – Anthony Warnecke</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,6 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <link href="./assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -62,18 +64,85 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-home-latest .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-website","listing-format","listing-engines","listing-language","listing-draft-mode","listing-title","listing-date","listing-date-format","listing-author","listing-description","listing-categories","listing-body-classes","listing-page-layout","listing-toc","listing-anchor-sections","listing-title-block-categories","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-home-latest'] = new List('listing-home-latest', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="icon" href="./favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="writing.css">
 <link rel="stylesheet" href="assets/easter-egg.css">
-<meta property="og:title" content="Anthony Warnecke — microbial genetics">
+<meta property="og:title" content="Plasmid biology, University of Liverpool">
 <meta property="og:description" content="Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution.">
+<meta property="og:image" content="https://warnea.github.io/assets/og.png">
 <meta property="og:site_name" content="Anthony Warnecke">
-<meta name="twitter:title" content="Anthony Warnecke — microbial genetics">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta name="twitter:title" content="Plasmid biology, University of Liverpool">
 <meta name="twitter:description" content="Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution.">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://warnea.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<link rel="canonical" href="https://warnea.github.io/">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -219,7 +288,8 @@ ul.task-list li input[type="checkbox"] {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -232,6 +302,14 @@ ul.task-list li input[type="checkbox"] {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -275,14 +353,14 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools tools-wide">
+              <div class="quarto-navbar-tools tools-wide">
     <a href="https://bsky.app/profile/warneckeanthony.bsky.social" title="Bluesky" class="quarto-navigation-tool px-1" aria-label="Bluesky"><i class="bi bi-bluesky"></i></a>
     <a href="https://www.linkedin.com/in/anthony-warnecke-5330b6234/" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
     <a href="https://orcid.org/0009-0006-2866-6623" title="ORCID" class="quarto-navigation-tool px-1" aria-label="ORCID"><i class="bi bi-orcid"></i></a>
     <a href="https://github.com/WarnEA" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -299,10 +377,48 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section class="home-hero" aria-labelledby="home-heading">
-  <p class="home-role">PhD Student · University of Liverpool</p>
-  <h1 id="home-heading">Anthony Warnecke</h1>
-  <p class="home-intro">I study how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution.</p>
+  <div class="home-copy">
+    <p class="home-role">PhD student · University of Liverpool</p>
+    <h1 id="home-heading">Anthony Warnecke</h1>
+    <p class="home-intro">I study how antimicrobial-resistance plasmids shape bacterial behaviour, adaptation and evolution.</p>
+<div id="listing-home-latest" class="quarto-listing quarto-listing-container-custom">
+<ul class="home-next">
+  <li><a class="home-link" href="projects.html#phd"><span class="home-link-kind">Current project</span><span class="home-link-title">Plasmid manipulation of bacterial behaviour in <em>Pseudomonas aeruginosa</em></span></a></li>
+
+  <li><a class="home-link" href="./posts/genomics.html"><span class="home-link-kind">Latest essay</span><span class="home-link-title">Why plasmids are more than resistance vectors</span></a></li>
+
+</ul>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+    <p class="home-elsewhere">
+      <a href="https://bsky.app/profile/warneckeanthony.bsky.social">Bluesky</a>
+      <a href="https://www.linkedin.com/in/anthony-warnecke-5330b6234/">LinkedIn</a>
+      <a href="https://orcid.org/0009-0006-2866-6623">ORCID</a>
+      <a href="https://github.com/WarnEA">GitHub</a>
+    </p>
+  </div>
+  <figure class="home-map figure" data-pmap="full">
+    <figcaption>This site as a plasmid map. Each section is a feature on pAW26.</figcaption>
+  </figure>
 </section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Anthony Warnecke",
+  "url": "https://warnea.github.io/",
+  "jobTitle": "PhD student",
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Liverpool" },
+  "knowsAbout": ["Plasmid biology", "Microbial genetics", "Antimicrobial resistance", "Bacterial evolution"],
+  "sameAs": [
+    "https://bsky.app/profile/warneckeanthony.bsky.social",
+    "https://www.linkedin.com/in/anthony-warnecke-5330b6234/",
+    "https://orcid.org/0009-0006-2866-6623",
+    "https://github.com/WarnEA"
+  ]
+}
+</script>
+
 
 
 
@@ -334,7 +450,7 @@ ul.task-list li input[type="checkbox"] {
       <button class="pong-toggle" id="pong-toggle" type="button" autofocus="">Start game</button>
       <button class="pong-reset" id="pong-reset" type="button">Restart</button>
     </div>
-    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus — and make a zombie.</p>
+    <p class="pong-instructions" id="pong-instructions">Move your bacterium with <kbd>W</kbd> / <kbd>S</kbd> or <kbd>↑</kbd> / <kbd>↓</kbd>, or drag on the court.<br><kbd>Space</kbd> pauses. Win to send a resistance gene through a pilus and make a zombie.</p>
   </div>
 </dialog>
 <script>
@@ -344,6 +460,12 @@ ul.task-list li input[type="checkbox"] {
     const offset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
     const assetsBase = stylesheet ? new URL('./', stylesheet.href) : new URL(offset + 'assets/', document.baseURI);
     const assetVersion = 'pong-three-close-transfer';
+    const map = document.createElement('script');
+    map.src = new URL('plasmid-map.js?v=paw26-2', assetsBase).href;
+    document.head.appendChild(map);
+    const skip = Object.assign(document.createElement('a'), { className: 'skip-link', href: '#quarto-document-content', textContent: 'Skip to content' });
+    document.body.prepend(skip);
+    document.querySelectorAll('.quarto-color-scheme-toggle').forEach((toggle) => toggle.setAttribute('aria-label', 'Toggle dark mode'));
     const engine = document.createElement('script');
     const engineUrl = new URL('pong-engine.js', assetsBase);
     engineUrl.searchParams.set('v', assetVersion);

@@ -1,17 +1,27 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "posts/*.qmd"
   resources:
     - assets/site.js
     - assets/pong-engine.js
     - assets/orcid.svg
+    - assets/plasmid-map.js
+    - favicon.ico
+    - assets/apple-touch-icon.png
 
 website:
   title: "Anthony Warnecke"
   site-url: https://warnea.github.io
+  image: assets/og.png
   search: false
   description: "Anthony Warnecke is a first year PhD student at the University of Liverpool studying microbial genetics, plasmid biology and bacterial evolution."
-  open-graph: true
-  twitter-card: true
+  open-graph:
+    image: assets/og.png
+  twitter-card:
+    card-style: summary_large_image
+    image: assets/og.png
   favicon: assets/favicon.svg
   navbar:
     title: "Anthony Warnecke"
@@ -26,7 +36,7 @@ website:
         text: Writing
       - href: CV.qmd
         text: CV
-    tools-collapse: false
+    tools-collapse: true
     tools:
       - icon: bluesky
         href: https://bsky.app/profile/warneckeanthony.bsky.social
@@ -57,6 +67,9 @@ format:
       - styles.css
       - writing.css
       - assets/easter-egg.css
+    respect-user-color-scheme: true
+    canonical-url: true
+    include-in-header: assets/head-extras.html
     include-after-body: assets/site-extras.html
     toc: false
     smooth-scroll: true
