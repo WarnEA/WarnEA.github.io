@@ -461,7 +461,7 @@ window.Quarto = {
     const assetsBase = stylesheet ? new URL('./', stylesheet.href) : new URL(offset + 'assets/', document.baseURI);
     const assetVersion = 'pong-three-close-transfer';
     const map = document.createElement('script');
-    map.src = new URL('plasmid-map.js?v=paw26-2', assetsBase).href;
+    map.src = new URL('plasmid-map.js?v=paw26-3', assetsBase).href;
     document.head.appendChild(map);
     const skip = Object.assign(document.createElement('a'), { className: 'skip-link', href: '#quarto-document-content', textContent: 'Skip to content' });
     document.body.prepend(skip);

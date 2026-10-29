@@ -173,7 +173,7 @@ body:has(.home-hero) #title-block-header { display: none; }
 .pmap-ori { fill: var(--ink); }
 .pmap-ori-label { fill: var(--ink); font-size: 15px; font-style: italic; }
 .pmap-feature { cursor: pointer; }
-.pmap-arc { fill: color-mix(in srgb, var(--sage) 22%, var(--paper)); stroke: var(--sage); stroke-width: 1.25; transition: fill .28s var(--ease), stroke .28s var(--ease); }
+.pmap-arc { fill: #d3d9d1; fill: color-mix(in srgb, var(--sage) 22%, var(--paper)); stroke: var(--sage); stroke-width: 1.25; transition: fill .28s var(--ease), stroke .28s var(--ease); }
 .pmap--mini .pmap-arc { stroke-width: .75; }
 .pmap-feature.is-current .pmap-arc { fill: var(--gene); stroke: var(--gene); }
 .pmap-label { fill: var(--ink); font-size: 19px; transition: fill .28s var(--ease); }

@@ -1,4 +1,5 @@
 // The site drawn as a plasmid map: pAW26, with each section as a gene feature on the ring.
+// Shapes carry light-theme fills as attributes, so a stale or missing stylesheet never paints them black.
 (() => {
   const SIZE = 4000; // bp, a drawing convention rather than a real construct
   const FEATURES = [
@@ -41,17 +42,17 @@
     const c = full ? 260 : 24, r = full ? 150 : 17, w = full ? 22 : 6;
     const svg = el('svg', { viewBox: `0 0 ${c * 2} ${c * 2}`, class: `pmap pmap--${mode}`, 'aria-hidden': 'true', focusable: 'false' });
     const turn = el('g', { class: 'pmap-turn' }, svg);
-    el('circle', { cx: c, cy: c, r: r + w / 2 + (full ? 6 : 2), class: 'pmap-strand' }, turn);
+    el('circle', { cx: c, cy: c, r: r + w / 2 + (full ? 6 : 2), class: 'pmap-strand', fill: 'none', stroke: '#dcded6' }, turn);
     if (mode === 'deletion') {
-      el('path', { d: `M${point(r, angle(1080), c)}A${r} ${r} 0 1 0 ${point(r, angle(2060), c)}`, class: 'pmap-backbone' }, svg);
+      el('path', { d: `M${point(r, angle(1080), c)}A${r} ${r} 0 1 0 ${point(r, angle(2060), c)}`, class: 'pmap-backbone', fill: 'none', stroke: '#3f594c' }, svg);
     } else {
-      el('circle', { cx: c, cy: c, r, class: 'pmap-backbone' }, svg);
+      el('circle', { cx: c, cy: c, r, class: 'pmap-backbone', fill: 'none', stroke: '#3f594c' }, svg);
     }
     if (full) {
       for (let bp = 0; bp < SIZE; bp += 250) {
         const major = bp % 1000 === 0, a = angle(bp);
         const [x1, y1] = xy(r - w / 2 - 6, a, c), [x2, y2] = xy(r - w / 2 - (major ? 16 : 11), a, c);
-        el('line', { x1, y1, x2, y2, class: 'pmap-tick' }, svg);
+        el('line', { x1, y1, x2, y2, class: 'pmap-tick', stroke: '#5b6259' }, svg);
         if (major && bp) {
           const [x, y] = xy(r - w / 2 - 30, a, c);
           el('text', { x, y, class: 'pmap-kb', 'text-anchor': 'middle', 'dominant-baseline': 'central' }, svg).textContent = `${bp / 1000} kb`;
@@ -67,7 +68,7 @@
       if (mode === 'deletion' && f.id === 'research') continue;
       const host = mode === 'full' ? el('a', { href: offset + f.href, tabindex: '-1', class: `pmap-feature f-${f.id}` }, svg) : el('g', { class: `pmap-feature f-${f.id}` }, svg);
       if (f.id === active) host.classList.add('is-current');
-      el('path', { d: featurePath(f, c, r, w), class: 'pmap-arc' }, host);
+      el('path', { d: featurePath(f, c, r, w), class: 'pmap-arc', fill: '#d3d9d1', stroke: '#3f594c' }, host);
       if (!full) continue;
       const mid = angle((f.from + f.to) / 2), [x, y] = xy(r + w / 2 + 30, mid, c);
       const anchor = Math.abs(Math.cos(mid)) < .25 ? 'middle' : Math.cos(mid) > 0 ? 'start' : 'end';
@@ -80,9 +81,9 @@
       const layer = el('svg', { viewBox: `0 0 ${c * 2} ${c * 2}`, class: 'pmap-fork-layer', 'aria-hidden': 'true', focusable: 'false' });
       svg.forkLayer = layer;
       const fork = el('g', { class: 'pmap-fork' }, layer);
-      el('path', { d: `M${point(r, angle(-90), c)}A${r} ${r} 0 0 1 ${point(r, angle(0), c)}`, class: 'pmap-fork-trail' }, fork);
+      el('path', { d: `M${point(r, angle(-90), c)}A${r} ${r} 0 0 1 ${point(r, angle(0), c)}`, class: 'pmap-fork-trail', fill: 'none', stroke: '#a24f37' }, fork);
       const [fx, fy] = xy(r, angle(0), c);
-      el('circle', { cx: fx, cy: fy, r: 4.5, class: 'pmap-fork-dot' }, fork);
+      el('circle', { cx: fx, cy: fy, r: 4.5, class: 'pmap-fork-dot', fill: '#a24f37' }, fork);
       const name = el('text', { x: c, y: c - 4, 'text-anchor': 'middle', class: 'pmap-name' }, svg);
       name.textContent = 'pAW26';
       el('text', { x: c, y: c + 20, 'text-anchor': 'middle', class: 'pmap-size' }, svg).textContent = mode === 'deletion' ? 'Δ 1,080 to 2,060' : `${number(SIZE)} bp`;
