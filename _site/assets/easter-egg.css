@@ -15,7 +15,11 @@
   cursor: pointer;
   transition: color .18s ease, border-color .18s ease;
 }
-.culture-trigger:hover { color: var(--sage); border-color: var(--rule); }
+.culture-trigger svg { transition: rotate .3s var(--ease, ease); }
+.culture-trigger-gene { stroke: var(--gene); }
+.culture-trigger:hover { color: var(--ink); border-color: var(--rule); }
+.culture-trigger:hover svg { rotate: 25deg; }
+.culture-trigger:active svg { rotate: 25deg; scale: .9; }
 .nav-footer-right:has(.culture-trigger) { display: flex; align-items: center; justify-content: flex-end; }
 .culture-dialog {
   width: min(790px, calc(100vw - 32px));
@@ -112,5 +116,5 @@
   .culture-dialog h2 { font-size: 1.6rem; }
   .pong-scoreboard { margin: .45rem 0; }
 }
-@media (prefers-reduced-motion: reduce) { .culture-trigger { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .culture-trigger, .culture-trigger svg { transition: none; } }
 @media print { .culture-trigger, .culture-dialog { display: none !important; } }

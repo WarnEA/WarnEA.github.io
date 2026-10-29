@@ -38,6 +38,19 @@
     let pointerY = null;
     let courtBounds;
     let graphics;
+    // Effects run on game time, so pausing freezes them mid-flight.
+    let clock = 0;
+    let effects = [];
+    let trail = [];
+    const squash = { player: -1, cpu: -1 };
+    const storage = { get: (key) => { try { return localStorage.getItem(key); } catch { return null; } },
+      set: (key, value) => { try { localStorage.setItem(key, value); } catch { /* private mode */ } } };
+    let best = Number(storage.get('plasmid-pong-best')) || 0;
+    let newBest = false;
+    const instructions = document.getElementById('pong-instructions');
+    if (instructions && window.matchMedia('(pointer: coarse)').matches) {
+      instructions.textContent = 'Drag on the court to move your bacterium. Hit with its edge, or while moving, to angle the plasmid. Win to pass on a resistance gene.';
+    }
 
     const footer = document.querySelector('.nav-footer-right') || document.querySelector('.nav-footer-left');
     if (footer) footer.appendChild(trigger);
@@ -52,27 +65,29 @@
         sage: color('--sage', '#527665'), accent: color('--accent', '#aa664b'), rule: color('--rule', '#dce0d9'),
         playerCell: dark ? '#35523e' : '#dce8d8', cpuCell: dark ? '#594936' : '#eee1c9',
         cpuStroke: dark ? '#dec29b' : '#917547', zombie: dark ? '#537432' : '#bfd786',
-        zombieStroke: dark ? '#d1e494' : '#587832', gene: dark ? '#efc976' : '#b98223',
+        zombieStroke: dark ? '#d1e494' : '#587832', gene: color('--gene', dark ? '#e08a6c' : '#a24f37'),
       };
     };
 
-    const paintPlasmid = (context, x, y, radius = COURT.ballRadius, angle = -.6) => {
+    // The plasmid is a tiny pAW26: the site's four features, with Research as the resistance gene.
+    const FEATURES = [[140, 860], [1080, 2060, true], [2280, 3120], [3340, 3860]];
+    const paintPlasmid = (context, x, y, radius = COURT.ballRadius) => {
+      const turn = (bp) => bp / 4000 * Math.PI * 2 - Math.PI / 2;
       context.save();
       context.translate(x, y);
-      context.rotate(angle);
       context.fillStyle = palette.paper;
-      context.beginPath(); context.arc(0, 0, radius, 0, Math.PI * 2); context.fill();
-      context.lineWidth = 2.5;
-      context.lineCap = 'round';
+      context.beginPath(); context.arc(0, 0, radius + 1, 0, Math.PI * 2); context.fill();
       context.strokeStyle = palette.sage;
-      for (let segment = 0; segment < 8; segment += 1) {
-        context.beginPath();
-        context.arc(0, 0, radius, segment * Math.PI / 4 + .04, (segment + 1) * Math.PI / 4 - .09);
-        context.stroke();
+      context.lineWidth = 1.25;
+      context.beginPath(); context.arc(0, 0, radius - 2, 0, Math.PI * 2); context.stroke();
+      context.lineCap = 'round';
+      for (const [from, to, gene] of FEATURES) {
+        context.strokeStyle = gene ? palette.gene : palette.sage;
+        context.lineWidth = gene ? radius * .42 : radius * .3;
+        context.beginPath(); context.arc(0, 0, radius - 2, turn(from), turn(to)); context.stroke();
       }
-      context.strokeStyle = palette.gene;
-      context.lineWidth = 4.5;
-      context.beginPath(); context.arc(0, 0, radius, -.28, .67); context.stroke();
+      context.fillStyle = palette.ink;
+      context.fillRect(-1, -radius - 1, 2, 5);
       context.restore();
     };
 
@@ -157,20 +172,29 @@
       brush.strokeStyle = palette.rule;
       brush.lineWidth = 1.5;
       brush.setLineDash([5, 11]);
-      brush.beginPath(); brush.moveTo(COURT.width / 2, 24); brush.lineTo(COURT.width / 2, COURT.height - 24); brush.stroke();
+      brush.beginPath(); brush.moveTo(COURT.width / 2, 30 + 16 * textScale()); brush.lineTo(COURT.width / 2, COURT.height - 24); brush.stroke();
       graphics = {
         court,
         player: sprite(96, 120, (brush) => paintBacterium(brush, 'player', false)),
         cpu: sprite(96, 120, (brush) => paintBacterium(brush, 'cpu', false)),
         playerZombie: sprite(96, 120, (brush) => paintBacterium(brush, 'player', true)),
         cpuZombie: sprite(96, 120, (brush) => paintBacterium(brush, 'cpu', true)),
-        plasmid: sprite(32, 32, (brush) => paintPlasmid(brush, 0, 0)),
-        genePlasmid: sprite(18, 18, (brush) => paintPlasmid(brush, 0, 0, 6)),
+        plasmid: sprite(36, 36, (brush) => paintPlasmid(brush, 0, 0)),
+        genePlasmid: sprite(20, 20, (brush) => paintPlasmid(brush, 0, 0, 7)),
       };
     };
 
-    const drawSprite = (sprite, x, y) => {
-      context.drawImage(sprite.image, x - sprite.width / 2, y - sprite.height / 2, sprite.width, sprite.height);
+    const drawSprite = (sprite, x, y, angle = 0, sx = 1, sy = 1) => {
+      if (!angle && sx === 1 && sy === 1) {
+        context.drawImage(sprite.image, x - sprite.width / 2, y - sprite.height / 2, sprite.width, sprite.height);
+        return;
+      }
+      context.save();
+      context.translate(x, y);
+      context.rotate(angle);
+      context.scale(sx, sy);
+      context.drawImage(sprite.image, -sprite.width / 2, -sprite.height / 2, sprite.width, sprite.height);
+      context.restore();
     };
 
     const cellPosition = (side) => {
@@ -183,7 +207,9 @@
     const drawBacterium = (side) => {
       const cell = cellPosition(side);
       const zombie = transfer.transformed && transfer.recipient === side;
-      drawSprite(graphics[zombie ? `${side}Zombie` : side], cell.x, cell.y);
+      // A struck cell gives a little, then springs back.
+      const give = squash[side] < 0 ? 0 : Math.max(0, 1 - (clock - squash[side]) / .22);
+      drawSprite(graphics[zombie ? `${side}Zombie` : side], cell.x, cell.y, 0, 1 - give * .16, 1 + give * .07);
       if (transfer.phase !== 'idle' && (side === transfer.winner || zombie)) drawSprite(graphics.genePlasmid, cell.x, cell.y + 26);
     };
 
@@ -227,6 +253,81 @@
       context.restore();
     };
 
+    const drawTrail = () => {
+      if (motion.matches) return;
+      context.fillStyle = palette.gene;
+      trail.forEach((point, index) => {
+        const weight = (index + 1) / (trail.length + 1);
+        context.globalAlpha = weight * .22;
+        context.beginPath(); context.arc(point.x, point.y, COURT.ballRadius * (.35 + weight * .5), 0, Math.PI * 2); context.fill();
+      });
+      context.globalAlpha = 1;
+    };
+
+    const drawEffects = () => {
+      effects = effects.filter((effect) => clock - effect.at < effect.life);
+      for (const effect of effects) {
+        const age = (clock - effect.at) / effect.life, fade = 1 - age;
+        if (effect.type === 'hit') {
+          context.strokeStyle = effect.side === 'player' ? palette.sage : palette.cpuStroke;
+          context.lineWidth = 2 * fade + .5;
+          context.globalAlpha = fade;
+          context.beginPath(); context.arc(effect.x, effect.y, 8 + age * 30, 0, Math.PI * 2); context.stroke();
+        } else {
+          // A lost plasmid spills its copies back onto the court.
+          context.fillStyle = palette.gene;
+          for (const bit of effect.bits) {
+            const travel = 1 - (1 - age) * (1 - age);
+            context.globalAlpha = fade;
+            context.beginPath();
+            context.arc(effect.x + bit.dx * travel, effect.y + bit.dy * travel, bit.size * (1 - age * .5), 0, Math.PI * 2);
+            context.fill();
+          }
+        }
+      }
+      context.globalAlpha = 1;
+    };
+
+    // Court text keeps a readable size when the court shrinks on a phone.
+    const textScale = () => Math.max(1, 11 / 15 * COURT.width / (courtBounds?.width || COURT.width));
+
+    const drawRally = () => {
+      if (game.state !== 'playing' && game.state !== 'paused') return;
+      const record = best >= 3 ? best : 0;
+      const text = game.rally > 1 ? `Rally ${game.rally}${newBest ? ' · New best' : record ? ` · Best ${record}` : ''}` : record ? `Best rally ${record}` : '';
+      if (!text) return;
+      const size = textScale();
+      context.fillStyle = newBest && game.rally > 1 ? palette.gene : palette.muted;
+      context.font = `500 ${15 * size}px system-ui, sans-serif`;
+      context.textAlign = 'center';
+      context.fillText(text, COURT.width / 2, 18 + 16 * size);
+    };
+
+    // Turn the engine's hits and points into effects, and keep score of the best rally.
+    const react = () => {
+      for (const event of game.events) {
+        if (event.type === 'hit') {
+          if (event.rally > best) { best = event.rally; newBest = best > 2; storage.set('plasmid-pong-best', String(best)); }
+          if (motion.matches) continue;
+          squash[event.side] = clock;
+          effects.push({ type: 'hit', side: event.side, x: event.x, y: event.y, at: clock, life: .35 });
+        } else {
+          trail = [];
+          newBest = false;
+          if (motion.matches) continue;
+          const inward = event.x === 0 ? 1 : -1;
+          const bits = Array.from({ length: 12 }, () => {
+            const angle = (Math.random() - .5) * 2.4, reach = 40 + Math.random() * 70;
+            return { dx: inward * Math.cos(angle) * reach, dy: Math.sin(angle) * reach, size: 2 + Math.random() * 3 };
+          });
+          effects.push({ type: 'score', x: event.x, y: event.y, bits, at: clock, life: .7 });
+        }
+      }
+      game.events.length = 0;
+      if (game.serveDelay > 0 || game.state !== 'playing') trail = [];
+      else if (!motion.matches) { trail.push({ x: game.ball.x, y: game.ball.y }); if (trail.length > 7) trail.shift(); }
+    };
+
     const draw = () => {
       if (!graphics) return;
       context.setTransform(1, 0, 0, 1, 0, 0);
@@ -235,8 +336,22 @@
       drawPilus();
       drawBacterium('player');
       drawBacterium('cpu');
-      if (game.state !== 'finished') drawSprite(graphics.plasmid, game.ball.x, game.ball.y);
+      drawEffects();
+      if (game.state !== 'finished') {
+        drawTrail();
+        if (game.serveDelay > 0) {
+          // Replication before the next serve: a fork runs once round the waiting plasmid.
+          context.strokeStyle = palette.gene;
+          context.lineWidth = 2;
+          context.lineCap = 'round';
+          context.beginPath();
+          context.arc(game.ball.x, game.ball.y, COURT.ballRadius + 7, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - game.serveDelay / .85));
+          context.stroke();
+        }
+        drawSprite(graphics.plasmid, game.ball.x, game.ball.y, motion.matches ? 0 : game.ball.angle);
+      }
       drawGene();
+      drawRally();
 
       let label = '';
       if (game.state === 'ready') label = 'Press Start to serve';
@@ -249,14 +364,15 @@
         else label = 'Resistance acquired. Zombie mode.';
       }
       if (label) {
+        const size = Math.min(textScale(), 2.2);
         context.fillStyle = palette.paper;
         context.globalAlpha = .94;
-        context.fillRect(COURT.width / 2 - 180, COURT.height / 2 + 80, 360, 48);
+        context.fillRect(COURT.width / 2 - 180 * size, COURT.height / 2 + 80, 360 * size, 48 * size);
         context.globalAlpha = 1;
         context.fillStyle = palette.muted;
-        context.font = '500 18px system-ui, sans-serif';
+        context.font = `500 ${18 * size}px system-ui, sans-serif`;
         context.textAlign = 'center';
-        context.fillText(label, COURT.width / 2, COURT.height / 2 + 110);
+        context.fillText(label, COURT.width / 2, COURT.height / 2 + 80 + 30 * size);
       }
     };
 
@@ -283,7 +399,7 @@
           transfer.phase === 'growing' ? 'The winner grows a pilus to share a resistance gene.' :
           transfer.phase === 'sending' ? 'The resistance gene travels through the pilus…' :
           `${recipient} gains resistance and becomes a resistant zombie.`;
-        status.textContent = `${winner} ${game.player.score}–${game.cpu.score}. ${result}`;
+        status.textContent = `${winner} ${game.player.score} to ${game.cpu.score}. ${result}`;
       }
       else if (game.player.score || game.cpu.score) status.textContent = `You ${game.player.score}, lab bacterium ${game.cpu.score}. First to ${goal}.`;
       else status.textContent = `Keep the plasmid in play. First to ${goal}.`;
@@ -308,6 +424,8 @@
       if (dialog.open) draw();
     };
 
+    const clearEffects = () => { effects = []; trail = []; newBest = false; squash.player = squash.cpu = -1; };
+
     const shouldAnimate = () => game.state === 'playing' || (game.state === 'finished' && transfer.active && !transfer.paused);
 
     const frame = (time) => {
@@ -321,10 +439,14 @@
       const dt = lastFrame === null ? 0 : (time - lastFrame) / 1000;
       lastFrame = time;
       nextFrame = Math.max((nextFrame ?? time) + 1000 / 60, time);
-      if (pointerY !== null) { game.setPlayerY(pointerY); pointerY = null; }
+      if (pointerY !== null) { game.dragPlayerTo(pointerY); pointerY = null; }
       const up = keys.has('w') || keys.has('arrowup');
       const down = keys.has('s') || keys.has('arrowdown');
-      if (game.state === 'playing') game.step(dt, Number(down) - Number(up));
+      if (game.state === 'playing') {
+        game.step(dt, Number(down) - Number(up));
+        react();
+      }
+      clock += Math.min(dt, .05);
       if (game.state === 'finished') {
         if (transfer.phase === 'idle') {
           transfer.begin(game.winner, motion.matches);
@@ -344,7 +466,7 @@
         if (!transfer.paused) { pause(); return; }
         transfer.resume();
       } else {
-        if (game.state === 'finished') { game.restart(); transfer.reset(); }
+        if (game.state === 'finished') { game.restart(); transfer.reset(); clearEffects(); }
         game.start();
       }
       sync();
@@ -386,6 +508,7 @@
       stopLoop();
       game.restart();
       transfer.reset();
+      clearEffects();
       sync();
       draw();
       toggle.focus({ preventScroll: true });
